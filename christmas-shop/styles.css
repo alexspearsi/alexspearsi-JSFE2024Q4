@@ -1,0 +1,659 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allura&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@import url('./normalize.css');
+
+
+html {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Montserrat;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    padding-right: 82px;
+    padding-left: 100px;
+    overflow: hidden;
+}
+
+.container__logo {
+    display: flex;
+    align-items: center;
+}
+.container__logo-img {
+    margin-right: 8px;
+}
+.container__logo-text {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+    text-align: left;
+}
+
+.nav-list {
+    display: flex;
+    list-style-type: none;
+    font-size: 12px;
+    line-height: 15.6px;
+    letter-spacing: 0.3px;
+    font-weight: 600;
+}
+.nav-list li {
+    padding: 12px 18px;
+    margin-left: 13px;
+}
+
+.nav-list li:last-child {
+    padding-right: 22px;
+
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* MAIN SECTION */
+/* HERO */
+main {
+    /* width: 100vw; */
+    /* margin-left: calc(-50vw + 50%); */
+    background-color: #FF4646;
+    border-radius: 20px;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    padding-top: 60px;
+    height: 524px;
+    background-color: #FF4646;
+    background-image: url(./assets/images/bg-ball.png),
+                      url(./assets/images/bg-snow.png);
+    background-size: cover, cover;
+    background-position: center, center;
+    border-radius: 20px 20px 0 0;
+}
+
+@media screen and (max-width: 380px) {
+
+}
+
+.hero__block {
+    margin-top: 27px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 433px;
+    height: 404px;
+}
+
+.text-font-allura {
+    padding-top: 10px;
+    margin-bottom: 0px;
+    font-family: Allura;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: #ffffff;
+}
+
+.hero-heading {
+    margin: 12px 0;
+    font-family: Montserrat;
+    text-transform: uppercase;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 48px;
+    letter-spacing: 0.18em;
+    text-align: center;
+    color: #ffffff;
+}
+.hero-button {
+    margin-bottom: -22px;
+}
+
+.button {
+    width: 235px;
+    height: 56px;
+    border-radius: 20px;
+    border: none;
+    background-color: #181C29;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+    text-align: center;
+}
+
+/* MAIN SECTION */
+/* ABOUT */
+
+.about {
+    padding-top: 60px;
+    height: 648px;
+    background-color: #FF4646;
+    background-image: url(./assets/images/bg-snow.png);
+    background-size: auto;
+    background-position: center;
+}
+
+.about__flex {
+    position: relative;
+    margin: 0px 83px 0px 83px;
+    display: flex;
+    /* flex-wrap: wrap; */
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 20px;
+}
+
+.about__text {
+    width: 479px;
+    padding-left: 56px;
+    margin-top: -8px;
+}
+
+.about__text>p:first-child {
+    padding-top: 60px;
+    font-family: Allura;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #FF4646;
+}
+.about__text>h2 {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36.48px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+.about__text>p:last-child {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.68px;
+    text-align: left;
+    padding-bottom: 60px;
+}
+
+/* .about__img {
+    width: 638px;
+} */
+
+
+.about__img img {
+    display: block;
+    border-radius: 20px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* MAIN SECTION */
+/* SLIDER */
+.slider {
+    height: 488px;
+    background-image: url(./assets/images/bg-snow.png);
+    background-size: cover;
+    background-position: center;
+    background-position: 36% 78%;
+}
+
+.slider__slide {
+    display: flex;
+    align-items: center;
+    padding-left: 62px;
+    overflow: hidden;
+}
+
+.slider__text-paragraph {
+    padding-bottom: 0;
+    margin-top: 59px;
+    margin-bottom: -10px;
+    font-family: Allura;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.slider__heading {
+    margin-bottom: -10px;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36.48px;
+    letter-spacing: 0.16em;
+    color: white;
+    text-align: center;
+}
+
+.slider__slide p {
+    font-family: Montserrat;
+    font-size: 80px;
+    font-weight: 600;
+    line-height: 97.52px;
+    color: #ffffff;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+.slider__slide img {
+    width: 200px;
+    border-radius: 20px;
+}
+
+.slider__arrows {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -8px;
+    margin-right: 82px;
+    gap: 20px;
+}
+
+.slider__arrows img {
+    cursor: pointer;
+}
+
+/* MAIN SECTION */
+/* BESTGIFTS */
+
+.bestgifts {
+    height: 524px;;
+    /* height: 554px; */
+    background-image: url(./assets/images/bg-snow.png);
+    background-size: cover;
+    background-position: center;
+}
+
+.bestgifts__text {
+    margin-top: -65px;
+}
+
+.bestgifts__text-paragraph {
+    padding-bottom: 0px;
+    margin-top: 67px;
+    margin-bottom: -12px;
+    font-family: Allura;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    text-align: center;
+}
+
+.bestgifts__heading {
+    margin-bottom: 18px;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36.48px;
+    letter-spacing: 0.16em;
+    color: white;
+    text-align: center;
+}
+
+.bestgifts__list {
+    display: flex;
+    gap: 12px;
+    padding-left: 82px;
+    padding-right: 82px;
+}
+
+.bestgifts__list-gift {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 310px;
+    height: 342px;
+    background-color: #ECF3F8;
+    border-radius: 20px;
+}
+
+.gift-description {
+    padding-top: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding-left: 20px;
+    background-color: white;
+    border-radius: 20px;
+    box-sizing: border-box;
+}
+
+.gift-description
+
+.gift-heading {
+    padding-top: 20px;
+    margin-top: -8px;
+    margin-bottom: -3px;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+}
+
+.gift-paragraph {
+    padding-bottom: 28px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+}
+
+.gift4 .gift-description .gift-heading {
+    padding-top: 18px;
+}
+.gift4 .gift-description .gift-paragraph {
+    margin-top: 0px;
+    padding-top: 13px;
+    line-height: 24.32px;
+    margin-bottom: -8px;
+}
+
+.gift1 {
+    background-image: url(./assets/images/gift-for-work.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.gift2 {
+    background-image: url(./assets/images/gift-for-health.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.gift3 {
+    background-image: url(./assets/images/gift-for-work.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.gift4 {
+    background-image: url(./assets/images/gift-for-harmony.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.gift1 h4, .gift3 h4 {
+    color: #4361FF;
+}
+
+.gift2 h4 {
+    color: #06A44F;
+}
+
+.gift4 h4 {
+    color: #FF43F7;
+}
+
+
+/* MAIN SECTION */
+/* CTA */
+
+.CTA {
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    /* height: 571px; */
+    height: 602px;
+    background-image: url(./assets/images/bg-forest.png), url(./assets/images/bg-snow.png);
+    background-size: cover;
+    background-position: right 0px bottom 0px;
+    background-repeat: no-repeat;
+}
+
+.CTA__container {
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 390px;
+}
+
+.CTA__container-heading {
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36.48px;
+    letter-spacing: 0.16em;
+    text-align: center;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.CTA__button {
+}
+
+.CTA__container-paragraph {
+    margin-top: 18px;
+    margin-bottom: 9px;
+    font-family: Allura;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    text-align: center;
+    color: white;
+}
+
+.CTA__countdown {
+    position: relative;
+    display: flex;
+    padding-left: 35px;
+    padding-right: 18px;
+    padding-top: -px;
+    width: 344px;
+    height: 72px;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 20px;
+}
+
+.CTA__countdown p {
+    margin-top: 14px;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    color: white;
+    text-align: center;
+}
+
+.CTA__countdown p:nth-child(2) {
+    padding-left: 20px;
+}
+
+.CTA__countdown p:nth-child(3) {
+    padding-left: 6px;
+}
+
+.CTA__countdown-days:after {
+    padding-top: 3px;
+    content: 'DAYS';
+    display: block;
+    font-size: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+}
+
+.CTA__countdown-hours:after {
+    padding-top: 3px;
+    content: 'HOURS';
+    display: block;
+    font-size: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+}
+
+.CTA__countdown-minutes:after {
+    padding-top: 3px;
+    content: 'MINUTES';
+    display: block;
+    font-size: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+}
+
+.CTA__countdown-seconds:after {
+    padding-top: 3px;
+    content: 'SECONDS';
+    display: block;
+    font-size: 10px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+}
+
+.CTA__countdown-line {
+    height: 20px;
+}
+
+.line1 {
+    position: absolute;
+    top: 25px;
+    left: 92px;
+}
+
+.line2 {
+    position: absolute;
+    top: 25px;
+    left: 172px;
+}
+
+
+.line3 {
+    position: absolute;
+    top: 25px;
+    left: 252px;
+}
+
+
+
+
+
+/* FOOTER */
+footer {
+    margin-top: 60px;
+}
+
+.footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    padding-left: 82px;
+    padding-right: 82px;
+    gap: 12px;
+}
+
+.f-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    width: 417px;
+    height: 204px;
+    background-color: #ECF3F8;
+    border-radius: 20px;
+}
+
+.footer__block1 {
+    background-image: url(./assets/svg/santa-claus.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 15%;
+}
+
+.footer__block2 {
+    background-image: url(./assets/svg/christmas-tree.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 15%;
+}
+
+.footer__block3 {
+    background-image: url(./assets/svg/snake.svg);
+    background-repeat: no-repeat;
+    background-position: 50% 15%;
+}
+
+.f-block h4 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-align: center;
+    margin-bottom: 3px;
+}
+
+.f-block p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24.32px;
+    letter-spacing: 0.08em;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.footer__block4 {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 11px;
+    padding-top: 25px;
+}    
+
+.footer__icons {
+    display: flex;
+    gap: 12px;
+    margin-top: -8px;
+}    
+
+p.footer-copyright {
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.68px;
+    letter-spacing: 0;
+    margin-bottom: -12px;
+}
+
+p.footer-rss {
+    font-family: Allura;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0.05em;
+    color: #181C29;
+}
