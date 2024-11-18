@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Allura&family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 @import url('./normalize.css');
 
 
@@ -54,15 +53,25 @@ header {
     letter-spacing: 0.3px;
     font-weight: 600;
 }
+
 .nav-list li {
-    padding: 12px 18px;
-    margin-left: 13px;
+    padding: 12px 20px;
+    margin-left: 5px;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background-color 0.5s ease, color 0.5s ease, border-radius 0.5s ease;
+}
+
+.nav-list li:hover {
+    background-color: #FF46461A;
+    border-radius: 12px;
+    color:#FF4646;
 }
 
 .nav-list li:last-child {
     padding-right: 22px;
-
 }
+
 
 a {
     color: inherit;
@@ -131,7 +140,7 @@ main {
 .hero-button {
     margin-bottom: -22px;
 }
-
+ 
 .button {
     width: 235px;
     height: 56px;
@@ -144,6 +153,13 @@ main {
     line-height: 15.6px;
     letter-spacing: 0.05em;
     text-align: center;
+    cursor: pointer;
+    transition: background-color 1s ease, color 1s ease;
+}
+
+.button:hover {
+    background-color: #FFFFFF;
+    color: #181C29;
 }
 
 /* MAIN SECTION */
@@ -281,9 +297,8 @@ main {
     cursor: pointer;
     padding: 20px;
     border-radius: 20px;
-    transition: background-color 0.5s ease-in;
+    transition: background-color 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
-
 
 .arrow-left {
     border: 1px solid rgb(255, 255, 255, 0.4);
@@ -388,8 +403,6 @@ main {
     box-sizing: border-box;
 }
 
-.gift-description
-
 .gift-heading {
     padding-top: 20px;
     margin-top: -8px;
@@ -487,9 +500,6 @@ main {
     text-align: center;
     color: white;
     margin-bottom: 20px;
-}
-
-.CTA__button {
 }
 
 .CTA__container-paragraph {
@@ -724,18 +734,27 @@ footer {
     display: flex;
     gap: 12px;
     margin-top: -8px;
-}    
+}
+
+.footer__icons img {
+    transition: all 0.5s ease;
+}
+
+.footer__icons img:hover {
+    filter: invert(10%) sepia(70%) saturate(4295%) hue-rotate(0deg) brightness(108%) contrast(101%);
+}
 
 p.footer-copyright {
+    margin-top: 12px;
     font-family: Montserrat;
     font-size: 16px;
     font-weight: 400;
     line-height: 23.68px;
     letter-spacing: 0;
-    margin-bottom: -12px;
 }
 
 p.footer-rss {
+    margin-top: -5px;
     font-family: Allura;
     font-size: 24px;
     font-weight: 400;
