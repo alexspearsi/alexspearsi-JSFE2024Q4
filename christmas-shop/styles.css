@@ -54,12 +54,18 @@ header {
     font-weight: 600;
 }
 
-.nav-list li {
+.nav-list a {
+    display: block;
     padding: 12px 20px;
-    margin-left: 5px;
+}
+
+.nav-list li {
+    /* padding: 12px 20px; */
+    margin-left: 8px;
     letter-spacing: 0.05em;
     cursor: pointer;
-    transition: background-color 0.5s ease, color 0.5s ease, border-radius 0.5s ease;
+    border-radius: 12px;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
 .nav-list li:hover {
@@ -69,7 +75,7 @@ header {
 }
 
 .nav-list li:last-child {
-    padding-right: 22px;
+    /* padding-right: 22px; */
 }
 
 
@@ -96,9 +102,10 @@ main {
     background-color: #FF4646;
     background-image: url(./assets/images/bg-ball.png),
                       url(./assets/images/bg-snow.png);
+    border-radius: 20px 20px 0 0;
+                      
     background-size: cover, cover;
     background-position: center, center;
-    border-radius: 20px 20px 0 0;
 }
 
 @media screen and (max-width: 380px) {
@@ -142,6 +149,7 @@ main {
 }
  
 .button {
+    padding-top: 20px;
     width: 235px;
     height: 56px;
     border-radius: 20px;
@@ -154,7 +162,7 @@ main {
     letter-spacing: 0.05em;
     text-align: center;
     cursor: pointer;
-    transition: background-color 1s ease, color 1s ease;
+    transition: background-color 1.2s ease, color 1.2s ease-out;
 }
 
 .button:hover {
@@ -170,8 +178,8 @@ main {
     height: 648px;
     background-color: #FF4646;
     background-image: url(./assets/images/bg-snow.png);
-    background-size: auto;
-    background-position: center;
+    background-size: cover;
+    background-position: -58px 0px;
 }
 
 .about__flex {
@@ -235,8 +243,8 @@ main {
     height: 488px;
     background-image: url(./assets/images/bg-snow.png);
     background-size: cover;
-    background-position: center;
-    background-position: 36% 78%;
+    background-position: 0px -112px;
+    background-repeat: no-repeat;
 }
 
 .slider__slide {
@@ -478,9 +486,9 @@ main {
     /* height: 571px; */
     height: 602px;
     background-image: url(./assets/images/bg-forest.png), url(./assets/images/bg-snow.png);
-    background-size: cover;
-    background-position: right 0px bottom 0px;
-    background-repeat: no-repeat;
+    background-size: cover, cover;
+    background-position: right 0px bottom 0px, 48px -39px;
+    background-repeat: no-repeat, no-repeat;
 }
 
 .CTA__container {
