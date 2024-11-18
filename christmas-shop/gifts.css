@@ -70,6 +70,12 @@ header {
     transition: background-color 0.5s ease, color 0.5s ease;
 }
 
+.nav-list li:first-child {
+    background-color: #FF46461A;
+    border-radius: 12px;
+    color:#FF4646;
+}
+
 .nav-list li:not(.no-hover):hover {
     background-color: #FF46461A;
     border-radius: 12px;
