@@ -76,6 +76,7 @@ header {
     color:#FF4646;
 }
 
+
 .nav-list li:not(.no-hover):hover {
     background-color: #FF46461A;
     border-radius: 12px;
@@ -87,6 +88,10 @@ a {
     text-decoration: none;
 }
 
+.no-hover>a {
+    cursor: default;
+    pointer-events: none;
+}
 
 /* MAIN SECTION */
 /* HERO */
@@ -136,6 +141,10 @@ main {
     cursor: pointer;
     border-radius: 12px;
     transition: background-color 0.5s ease;
+}
+
+li.no-hover {
+    cursor: default;
 }
 
 .gifts__panel li:not(.no-hover):hover {
