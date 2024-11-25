@@ -181,7 +181,11 @@ li.no-hover {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px 82px 60px 82px;
+    /* padding: 20px 82px 60px 82px; */
+    padding-top: 20px;
+    padding-bottom: 60px;
+    padding-right: 5,125rem;
+    padding-left: 5,125rem;
     gap: 12px;
 }
 
@@ -280,23 +284,26 @@ li.no-hover {
 
 @media only screen and (max-width: 800px) {
     .gifts__list {
-        padding: 20px 60px 60px 60px;
+        /* padding: 20px 60px 60px 60px; */
         gap: 12px;
     }
 
     .gifts__panel {
-        margin-left: -43px;
+        margin-left: -50px;
     }
 
     .gifts__panel li {
-        margin-left: 4px;
+        margin-left: 10px;
     }
 }
 
 @media only screen and (max-width: 480px) {
     .gifts__heading {
-        padding-left: 31px;
-        padding-right: 30px;
+        /* padding-left: 31px;
+        padding-right: 30px; */
+        padding-left: 1,9375rem;
+        padding-right: 1,9375rem;
+        width: 364px;
     }
 
     .gifts__panel {
