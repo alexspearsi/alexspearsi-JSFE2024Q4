@@ -31,7 +31,6 @@ const workCards = document.querySelectorAll('[data-type="For Work"]')
 const healthCards = document.querySelectorAll('[data-type="For Health"]')
 const harmonyCards = document.querySelectorAll('[data-type="For Harmony"]')
 
-// Pqanel: All / For Work / For Health / For Harmony
 const allButton = document.getElementById('all')
 const workButton = document.getElementById('work')
 const healthButton = document.getElementById('health')
