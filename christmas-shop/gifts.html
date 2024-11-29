@@ -6,6 +6,7 @@
     <link rel="icon" href="./assets/svg/snowflake.svg" type="image/svg+xml">
     <title>Christmas shop</title>
     <link rel="stylesheet" href="./gifts.css">
+    <link rel="stylesheet" href="./modal_window.css">
 </head>
 <body>
 
@@ -29,19 +30,31 @@
         <div class="burger"><img src='./assets/svg/Burger.svg' alt="navigation"></div>
     </header>
 
+    
+    <div class="check" data-type="harmony">
+        <div class="">
+            <h4 class="">FOR HARMONY</h4>
+            <p class="">JOY CHARGER</p>
+            <p class="">Uses console.log like a crystal ball to find any issue.</p>
+        </div>
+    </div>
+
+
     <main>
         <section class="gifts">
             <h1 class="gifts__heading">Achieve health, harmony, and inner strength</h1>
             <div class="gifts__panel">
                 <ul>
-                    <li class="no-hover">ALL</li>
-                    <li>FOR WORK</li>
-                    <li>FOR HEALTH</li>
-                    <li>FOR HARMONY</li>
+                    <li id="all" class="active">ALL</li>
+                    <li id="work">FOR WORK</li>
+                    <li id="health">FOR HEALTH</li>
+                    <li id="harmony" >FOR HARMONY</li>
                 </ul>
             </div>
             <div class="gifts__list">
-                <div class="gift_item gift1" data-type="work">
+                <!-- ВСТАВИЛ КОД В JS-->
+
+                <!-- <div class="gift_item gift1" data-type="work">
                     <div class="gift__item-description">
                         <h4 class="gift__item-heading">FOR WORK</h4>
                         <p class="gift__item-paragraph">CONSOLE.LOG GURU</p>
@@ -123,7 +136,7 @@
                         <h4 class="gift__item-heading">FOR HARMONY</h4>
                         <p class="gift__item-paragraph">SPONTANEOUS CODING PHILOSOPHER</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </section>
     </main>
@@ -157,5 +170,6 @@
             </div>
         </div>
     </footer>
+    <script type="module" src="./gifts.js"></script>
 </body>
 </html>
