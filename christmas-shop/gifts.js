@@ -1,21 +1,27 @@
 import { cards } from './cards.js'
 
-function shuffleCards(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-}
-
-shuffleCards(cards)
-
-
 const listOfCards = document.querySelector('.gifts__list')
 
+// Shuffle the cards
+// function shuffleCards(array) {
+//     for (let i = array.length - 1; i > 0; i--) {
+//         const j = Math.floor(Math.random() * (i + 1));
+//         [array[i], array[j]] = [array[j], array[i]];
+//     }
+// }
+// shuffleCards(cards)
+
+// Update cards with its description
 function showCards(cards) {
     for (let i = 0; i < cards.length; i++) {
         const card = cards[i];
-        const cardHTML = `<div class="gift_item gift1" data-type="${card.category}">
+        const cardHTML = `<div class="gift_item gift1" data-type="${card.category}"
+                                                       data-name="${card.name}"
+                                                       data-description="${card.description}"
+                                                       data-live="${card.superpowers.live.slice(1)}" 
+                                                       data-create="${card.superpowers.create.slice(1)}" 
+                                                       data-love="${card.superpowers.love.slice(1)}"
+                                                       data-dream="${card.superpowers.dream.slice(1)}">
                             <div class="gift__item-description">
                                 <h4 class="gift__item-heading">${card.category.toUpperCase()}</h4>
                                 <p class="gift__item-paragraph">${card.name.toUpperCase()}</p>
@@ -31,7 +37,6 @@ const workCards = document.querySelectorAll('[data-type="For Work"]')
 const healthCards = document.querySelectorAll('[data-type="For Health"]')
 const harmonyCards = document.querySelectorAll('[data-type="For Harmony"]')
 
-// Pqanel: All / For Work / For Health / For Harmony
 const allButton = document.getElementById('all')
 const workButton = document.getElementById('work')
 const healthButton = document.getElementById('health')
@@ -44,10 +49,13 @@ function toDisplayCard(nameOfCard, value) {
     })
 }
 
+
+// Add interaction for the panel
 function toAddActiveDisplay(nameOfCard) {
     nameOfCard.classList.add('active')
 }
 
+// Remove interaction for the panel
 function toRemoveActiveDisplay(nameOfCard) {
     nameOfCard.classList.remove('active')
 }
