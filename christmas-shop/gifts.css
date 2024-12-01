@@ -15,6 +15,11 @@ body {
     box-sizing: border-box;
 }
 
+body.modal-open {
+    overflow: hidden;
+    padding-right: 17px;
+  }
+
 /* HEADER */
 header {
     display: flex;
@@ -168,14 +173,13 @@ main {
     }
 }
 
-.gifts__panel>ul>li:first-child {
+.active {
     background-color: rgba(255,255,255,0.2);
     border-radius: 12px;
+    cursor: default !important;
+    pointer-events: none;
 }
 
-li.no-hover {
-    cursor: default;
-}
 
 .gifts__list {
     display: flex;
@@ -209,36 +213,36 @@ li.no-hover {
     }
 }
 
-.gift_item[data-type="work"] {
+.gift_item[data-type="For Work"] {
     /* display: none; */
     background-image: url(./assets/images/gift-for-work.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
-.gift_item[data-type="harmony"] {
+.gift_item[data-type="For Harmony"] {
     /* display: none; */
     background-image: url(./assets/images/gift-for-harmony.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
-.gift_item[data-type="health"] {
+.gift_item[data-type="For Health"] {
     /* display: none; */
     background-image: url(./assets/images/gift-for-health.png);
     background-size: 100%;
     background-repeat: no-repeat;
 }
 
-.gift_item[data-type="work"] h4 {
+.gift_item[data-type="For Work"] h4 {
     color: #4361FF;
 }
 
-.gift_item[data-type="health"] h4 {
+.gift_item[data-type="For Health"] h4 {
     color: #06A44F;
 }
 
-.gift_item[data-type="harmony"] h4 {
+.gift_item[data-type="For Harmony"] h4 {
     color: #FF43F7;
 }
 
@@ -269,6 +273,13 @@ li.no-hover {
     line-height: 24.32px;
     letter-spacing: 0.08em;
 }
+
+
+
+
+
+
+
 
 @media only screen and (max-width: 1440px) {
     .gifts__panel {

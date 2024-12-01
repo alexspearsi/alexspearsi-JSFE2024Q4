@@ -1,0 +1,153 @@
+.background-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+    overflow: hidden;
+    border-radius: 0%;
+}
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+
+    height: 514px;
+    width: 400px;
+    background-color: #ECF3F8;
+    border-radius: 20px;
+
+    background-image: url(./assets/images/gift-for-work.png);
+    background-size: 100%;
+    background-position: 1px -33px;;
+    background-repeat: no-repeat;
+}
+
+.modal__close-button {
+    display: block;
+    z-index: 1000;
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    cursor: pointer;
+    pointer-events: auto;
+}
+
+.modal__text {
+    position: absolute;
+    top: 230px;
+    width: 100%;
+    height: 284px;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.modal__text-category {
+    margin: 20px 20px -13px 20px;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+
+    color: #4361FF;
+}
+
+.modal__text-name {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: -8px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24.32px;
+    letter-spacing: 0.08em;
+}
+
+.modal__text-description {
+    margin-bottom: 21px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.68px;
+}
+
+.modal__text-superpowers {
+    margin-bottom: 9px;
+    margin-left: 20px;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.6px;
+    letter-spacing: 0.05em;
+}
+
+.modal__superpowers-item {
+    margin-bottom: 0px;
+    display: flex;
+    margin-left: 20px;
+    margin-right: 20px;
+    align-items: center;
+
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.modal__superpowers-item-name {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-right: auto;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.68px;
+}
+
+.modal__superpowers-item-value {
+    margin-right: 12px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-family: Montserrat;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 23.68px;
+}
+
+.modal__superpowers-item-stars svg {
+    margin-left: -0.5px;
+    width: 19.78px;
+    height: 17px;
+    left: 1.11px;
+    gap: 0px;
+    opacity: 0.1;
+}
+
+.power-item1>div svg:nth-child(-n+5) {
+    opacity: 0.1;
+}
+
+.power-item2>div svg:nth-child(-n+5) {
+    opacity: 0.1;
+}
+
+.power-item3>div svg:nth-child(-n+2) {
+    opacity: 0.1;
+}
+
+.power-item4>div svg:nth-child(-n+4) {
+    opacity: 0.1;
+}
+
+@media only screen and (max-width: 450px) {
+    .modal {
+        width: 364px;
+    }
+}
