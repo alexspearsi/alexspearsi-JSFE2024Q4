@@ -1,0 +1,21 @@
+.scroll {
+    display: none;
+    justify-content: flex-end;
+    position: fixed;
+    z-index: 10;
+    bottom: 8px;
+    right: 8px;
+    opacity: 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+@media only screen and (max-width: 768px) {
+    .scroll {
+        display: block;
+    }
+}
+
+.scroll.visible {
+    opacity: 1;
+}
