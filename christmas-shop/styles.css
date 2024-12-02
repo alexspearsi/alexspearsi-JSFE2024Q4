@@ -43,10 +43,6 @@ header {
     text-align: left;
 }
 
-.burger {
-    display: none;
-}
-
 .nav-list {
     display: flex;
     list-style-type: none;
@@ -93,10 +89,6 @@ a {
 
     .nav-list {
         display: none;
-    }
-
-    .burger {
-        display: block;
     }
 }
 
