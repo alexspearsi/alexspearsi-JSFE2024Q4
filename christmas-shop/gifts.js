@@ -3,13 +3,13 @@ import { cards } from './cards.js'
 const listOfCards = document.querySelector('.gifts__list')
 
 // Shuffle the cards
-function shuffleCards(array) {
-    for (let i = array.length - 1; i > 0; i--) {
+function toShuffleCards(arrayOfCards) {
+    for (let i = arrayOfCards.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
+        [arrayOfCards[i], arrayOfCards[j]] = [arrayOfCards[j], arrayOfCards[i]];
     }
 }
-shuffleCards(cards)
+toShuffleCards(cards)
 
 // Update cards with its description
 function showCards(cards) {

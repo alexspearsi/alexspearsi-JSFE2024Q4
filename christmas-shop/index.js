@@ -457,7 +457,6 @@ function toZeroOpacityOfStars() {
 
 function updatePicture(item) {
   const cardPicture = document.querySelector('.modal');
-  console.log(cardPicture);
   switch (item.getAttribute('data-type')) {
       case 'For Work':
           cardPicture.style.backgroundImage = 'url(./assets/images/gift-for-work.png)';
@@ -474,7 +473,6 @@ function updatePicture(item) {
 function updateCardCategory(item) {
     const cardCategory = document.querySelector('.modal__text-category');
     cardCategory.innerHTML = item.getAttribute('data-type').toUpperCase();
-    console.log(cardCategory);
 
     switch (item.getAttribute('data-type')) {
         case 'For Work':
