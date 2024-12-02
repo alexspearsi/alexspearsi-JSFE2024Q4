@@ -1,0 +1,93 @@
+.overflow-hidden {
+    overflow-y: hidden;
+}
+
+.burger {
+    display: none;
+}
+
+.menu {
+    right: -775px; 
+    transform: translateX(100%); 
+    transition: transform 0.5s ease; 
+
+    position: fixed;
+    flex-direction: column;
+    justify-content: center;
+    top: 64px;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    align-items: center;
+    gap: 16px;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.menu-active {
+    display: flex;
+    right: 0;
+    transform: translateX(0); 
+}
+
+.menu-exit {
+    transform: translateX(100%);
+}
+
+.menu>a {
+    margin-top: 9px;
+    padding-bottom: 6px;
+    font-family: Montserrat;
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 36.48px;
+    letter-spacing: 0.16em;
+    list-style-type: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 768px) {
+    .burger {
+        display: flex;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .line {
+        width: 20px;
+        height: 1px;
+        background-color: #181c29;
+        z-index: 10;
+        transition: transform 0.5s, opacity 0.5s, background-color 0.5s;
+    }
+
+    .line.active:nth-child(1) {
+        transform: translateY(5px) rotate(45deg);
+    }
+    
+    .line.active:nth-child(2) {
+        transform: translateY(-4px) rotate(-45deg);
+    }
+}
