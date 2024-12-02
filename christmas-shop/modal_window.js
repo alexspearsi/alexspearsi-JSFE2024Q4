@@ -12,6 +12,7 @@ const dreamStars = document.querySelector('.power-item4 > :nth-child(3)').childr
 
 
 
+
 function closeModal() {
     modalWindow.style.display = "none";
     document.documentElement.style.overflowY = ''
@@ -41,6 +42,23 @@ function toZeroOpacityOfStars() {
     Array.from(dreamStars).forEach(star => star.style.opacity = '0.1')
 }
 
+
+function updatePicture(item) {
+    const cardPicture = document.querySelector('.modal');
+    console.log(cardPicture);
+    switch (item.getAttribute('data-type')) {
+        case 'For Work':
+            cardPicture.style.backgroundImage = 'url(./assets/images/gift-for-work.png)';
+            break;
+        case 'For Health':
+            cardPicture.style.backgroundImage = 'url(./assets/images/gift-for-health.png)';
+            break;
+        case 'For Harmony':
+            cardPicture.style.backgroundImage = 'url(./assets/images/gift-for-harmony.png)';
+            break;
+    }
+}
+
 function updateCardCategory(item) {
     const cardCategory = document.querySelector('.modal__text-category');
     cardCategory.innerHTML = item.getAttribute('data-type').toUpperCase();
@@ -56,7 +74,6 @@ function updateCardCategory(item) {
             cardCategory.style.color = "#FF43F7";
             break;
     }
-
 }
 
 function updateCardName(item) {
@@ -100,6 +117,7 @@ giftCards.forEach(item => {
         updateCardName(item);
         updateCardDescription(item);
         updateScore(item);
+        updatePicture(item);
         
         Array.from(liveStars).forEach((star, index) => {
             if (index < item.getAttribute('data-live') / 100) {
