@@ -45,7 +45,6 @@ function toZeroOpacityOfStars() {
 
 function updatePicture(item) {
     const cardPicture = document.querySelector('.modal');
-    console.log(cardPicture);
     switch (item.getAttribute('data-type')) {
         case 'For Work':
             cardPicture.style.backgroundImage = 'url(./assets/images/gift-for-work.png)';
