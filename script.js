@@ -6,6 +6,7 @@ let levelItems = document.querySelectorAll('.header__level-1__list li')
 let keyboardOutput = document.querySelector('.keyboard-output')
 keyboardOutput.innerHTML = '\u200B'
 
+
 let audio = document.getElementById('click-sound');
 
 let alphabet = 'ABCDEFJHIGKLMNOPQRSTUVWXYZ';
@@ -117,51 +118,84 @@ function timeForInput() {
   //находим все клавиши клавиатуры
   let symbolsOfKeyboard = Array.from(document.querySelectorAll('.row'))
         .flatMap(item => Array.from(item.children));
-  
-  let symbolsOfNumbers = symbolsOfKeyboard.slice(0, 10)
-  let symbolsOfLetters = symbolsOfKeyboard.slice(10)
-  
-  
+
   if (level === 'easy') {
     let counter = 0;
-    symbolsOfNumbers.forEach(item => {
-      item.addEventListener('click', (event) => {
-        keyboardOutput.textContent += event.target.innerHTML
-        outputArray.push(event.target.innerHTML)
-        console.log(outputArray);
-
-        if (sequence[counter] !== +outputArray[counter]) {
-          keyboardOutput.innerHTML = "WRONG"
-          keyboardOutput.style.color = 'red'
-        } else if (sequence.length === outputArray.length) {
-          keyboardOutput.innerHTML = "RIGHT"
-          keyboardOutput.style.color = '32CD32'
-        } else {
-          counter++
-        }
-        
-      })
-    })
-  } 
+  
+    // Сохраняем ссылку на обработчик
+    function handleClick (event) {
+      keyboardOutput.textContent += event.target.innerHTML; // буква клавиши на экран
+      outputArray.push(event.target.innerHTML);
+      console.log(outputArray);
+  
+      if (sequence[counter] != outputArray[counter]) {
+        showResult('WRONG', 'red')
+      } else if ((counter + 1) === sequence.length) {
+        showResult('RIGHT', '32CD32')
+      } else {
+        counter++;
+      }
+    }
+    // Добавляем обработчик события для каждого элемента
+    symbolsOfKeyboard.forEach(item => {
+      item.addEventListener('click', handleClick);
+    });
+  }
+  
 
   if (level === 'medium') {
-    symbolsOfLetters.forEach(item => {
-      item.addEventListener('click', (event) => {
-        keyboardOutput.textContent += event.target.innerHTML
-        outputArray.push(event.target.innerHTML)
-      })
-    })
+    let counter = 0;
+  
+    // Сохраняем ссылку на обработчик
+    function handleClick (event) {
+      keyboardOutput.textContent += event.target.innerHTML; // буква клавиши на экран
+      outputArray.push(event.target.innerHTML);
+      console.log(outputArray);
+  
+      if (sequence[counter] != outputArray[counter]) {
+        showResult('WRONG', 'red')
+      } else if ((counter + 1) === sequence.length) {
+        showResult('RIGHT', '32CD32')
+      } else {
+        counter++;
+      }
+    }
+    // Добавляем обработчик события для каждого элемента
+    symbolsOfKeyboard.forEach(item => {
+      item.addEventListener('click', handleClick);
+    });
   }
 
   if (level === 'hard') {
+    let counter = 0;
+  
+    // Сохраняем ссылку на обработчик
+    function handleClick (event) {
+      keyboardOutput.textContent += event.target.innerHTML; // буква клавиши на экран
+      outputArray.push(event.target.innerHTML);
+      console.log(outputArray);
+  
+      if (sequence[counter] != outputArray[counter]) {
+        showResult('WRONG', 'red')
+      } else if ((counter + 1) === sequence.length) {
+        showResult('RIGHT', '32CD32')
+      } else {
+        counter++;
+      }
+    }
+    // Добавляем обработчик события для каждого элемента
     symbolsOfKeyboard.forEach(item => {
-      item.addEventListener('click', (event) => {
-        keyboardOutput.textContent += event.target.innerHTML
-        outputArray.push(event.target.innerHTML)
-      })
-    })
+      item.addEventListener('click', handleClick);
+    });
   }
 
+  function showResult(text, color) {
+    symbolsOfKeyboard.forEach(i => i.removeEventListener('click', handleClick));
+    setTimeout(() => {
+      keyboardOutput.innerHTML = text;
+      keyboardOutput.style.color = color;
+    }, 100);
+  }
 }
 
 
