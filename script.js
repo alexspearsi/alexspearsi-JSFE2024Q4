@@ -115,89 +115,55 @@ function runAGame() {
 
 
 function timeForInput() {
-  //находим все клавиши клавиатуры
-  let symbolsOfKeyboard = Array.from(document.querySelectorAll('.row'))
-        .flatMap(item => Array.from(item.children));
+  let counter = 0;
+  const symbolsOfKeyboard = Array.from(document.querySelectorAll('.row'))
+                                 .flatMap(row => Array.from(row.children));
 
-  if (level === 'easy') {
-    let counter = 0;
-  
-    // Сохраняем ссылку на обработчик
-    function handleClick (event) {
-      keyboardOutput.textContent += event.target.innerHTML; // буква клавиши на экран
-      outputArray.push(event.target.innerHTML);
-      console.log(outputArray);
-  
-      if (sequence[counter] != outputArray[counter]) {
-        showResult('WRONG', 'red')
-      } else if ((counter + 1) === sequence.length) {
-        showResult('RIGHT', '32CD32')
-      } else {
-        counter++;
-      }
-    }
-    // Добавляем обработчик события для каждого элемента
-    symbolsOfKeyboard.forEach(item => {
-      item.addEventListener('click', handleClick);
-    });
-  }
-  
-
-  if (level === 'medium') {
-    let counter = 0;
-  
-    // Сохраняем ссылку на обработчик
-    function handleClick (event) {
-      keyboardOutput.textContent += event.target.innerHTML; // буква клавиши на экран
-      outputArray.push(event.target.innerHTML);
-      console.log(outputArray);
-  
-      if (sequence[counter] != outputArray[counter]) {
-        showResult('WRONG', 'red')
-      } else if ((counter + 1) === sequence.length) {
-        showResult('RIGHT', '32CD32')
-      } else {
-        counter++;
-      }
-    }
-    // Добавляем обработчик события для каждого элемента
-    symbolsOfKeyboard.forEach(item => {
-      item.addEventListener('click', handleClick);
-    });
+  const keyboard = {
+    "easy": symbolsOfKeyboard.slice(0, 10),
+    "medium": symbolsOfKeyboard.slice(10),
+    "hard": symbolsOfKeyboard
   }
 
-  if (level === 'hard') {
-    let counter = 0;
-  
-    // Сохраняем ссылку на обработчик
-    function handleClick (event) {
-      keyboardOutput.textContent += event.target.innerHTML; // буква клавиши на экран
-      outputArray.push(event.target.innerHTML);
-      console.log(outputArray);
-  
-      if (sequence[counter] != outputArray[counter]) {
-        showResult('WRONG', 'red')
-      } else if ((counter + 1) === sequence.length) {
-        showResult('RIGHT', '32CD32')
-      } else {
-        counter++;
-      }
-    }
-    // Добавляем обработчик события для каждого элемента
-    symbolsOfKeyboard.forEach(item => {
-      item.addEventListener('click', handleClick);
-    });
-  }
 
+  // Показываем результат
   function showResult(text, color) {
-    symbolsOfKeyboard.forEach(i => i.removeEventListener('click', handleClick));
+    keyboard[level].forEach(item => item.removeEventListener('click', clickOnKey));
+    document.removeEventListener('keydown', pressOnKey);
     setTimeout(() => {
       keyboardOutput.innerHTML = text;
       keyboardOutput.style.color = color;
     }, 100);
   }
+
+  // Обработчик для виртуальной клавиатуры
+  function clickOnKey(event) {
+    processInput(event.target.innerHTML);
+  }
+
+  // Обработчик для механической клавиатуры
+  function pressOnKey(event) {
+    const key = event.key.toUpperCase();
+    const matchingKey = keyboard[level].find(item => item.innerHTML === key);
+    if (matchingKey) processInput(key);
+  }
+
+  // Общая логика обработки ввода
+  function processInput(input) {
+    keyboardOutput.textContent += input;
+    outputArray.push(input);
+    console.log(outputArray);
+
+    if (sequence[counter] != outputArray[counter]) {
+      showResult('WRONG', 'red');
+    } else if ((counter + 1) === sequence.length) {
+      showResult('RIGHT', '32CD32');
+    } else {
+      counter++;
+    }
+  }
+
+  // Добавляем обработчики событий
+  keyboard[level].forEach(item => item.addEventListener('click', clickOnKey));
+  document.addEventListener('keydown', pressOnKey);
 }
-
-
-
-
