@@ -8,6 +8,8 @@ let levelItems = document.querySelectorAll('.header__level-1__list li')
 let keyboardOutput = document.querySelector('.keyboard-output')
     keyboardOutput.innerHTML = '\u200B'
 let audio = document.getElementById('click-sound');
+let audio2 = document.getElementById('click-sound-2');
+let audio3 = document.getElementById('click-sound-3');
 
 let alphabet = 'JBCGKAZFHYDILMNOPQSTUWERVX';
 let alphabetWithNums = 'J9A2H0F6NQK3G7M4B5D1L8IYZCEXWOSTUV';
@@ -135,7 +137,14 @@ function runAGame() {
     })
   }
   console.log(`Round ${round}`, sequence);
-  setTimeout(() => showSequance(), 600)
+  setTimeout(() => {
+    // Во время симуляции глушить кнопки NEW GAME и REPEAT SEQUANCE
+    buttonRepeatSequence.classList.add('disabled');
+    buttonRepeatSequence.style.pointerEvents = 'none';
+    buttonNewGame.classList.add('disabled');
+    buttonNewGame.style.pointerEvents = 'none'
+    showSequance()
+  }, 600)
 }
 
 function showSequance() {
@@ -155,6 +164,11 @@ function showSequance() {
             completedTimers++;
 
             if (completedTimers === sequence.length) {
+              // Показывать кнопки New Game и Repeat sequance
+              buttonRepeatSequence.classList.remove('disabled');
+              buttonRepeatSequence.style.pointerEvents = '';
+              buttonNewGame.classList.remove('disabled');
+              buttonNewGame.style.pointerEvents = ''
               timeForInput();
             }
 
@@ -168,6 +182,10 @@ function showSequance() {
 
 
 function timeForInput() {
+  if (isRepeatSequenceClicked) {
+    buttonRepeatSequence.classList.add('disabled');
+    buttonRepeatSequence.style.pointerEvents = 'none';
+  }
   keyboardOutput.style.color = '';
   let counter = 0;
   const symbolsOfKeyboard = Array.from(document.querySelectorAll('.row'))
@@ -188,14 +206,19 @@ function timeForInput() {
 
   buttonRepeatSequence.addEventListener('click', () => {
     if (!isRepeatSequenceClicked) {
+      console.log('click');
       outputArray = [];
       isRepeatSequenceClicked = true;
       keyboardOutput.innerHTML = '\u200B';
-      setTimeout(() => showSequance(), 600);
+      setTimeout(() => {
+        buttonRepeatSequence.classList.add('disabled');
+        buttonRepeatSequence.style.pointerEvents = 'none';
+        buttonNewGame.classList.add('disabled');
+        buttonNewGame.style.pointerEvents = 'none'
+        showSequance()
+      }, 300);
     }
 
-    buttonRepeatSequence.classList.add('disabled');
-    buttonRepeatSequence.style.pointerEvents = 'none';
 
     // Удаляем обработчики событий перед повтором
     keyboard[level].forEach(item => item.removeEventListener('click', clickOnKey));
@@ -213,6 +236,7 @@ function timeForInput() {
 
     if (text === "WRONG" && isRepeatSequenceClicked) {
       setTimeout(() => {
+        audio2.play();
         keyboardOutput.innerHTML = finish;
         keyboardOutput.style.color = color;
       }, 0); // ДОБАВИТЬ ЗАДЕРЖКУ 100 СЕК, ЧТОБЫ ПОКАЗЫВАЛИСЬ ВСЕ БУКВЫ
@@ -221,6 +245,7 @@ function timeForInput() {
         // Конец игры. Выиграл!
         if (round === 5) {
           keyboardOutput.innerHTML = finish;
+          audio3.play();
           buttonNext.style.display = 'none';
           buttonRepeatSequence.style.display = 'block';
           buttonRepeatSequence.classList.add('disabled');
