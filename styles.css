@@ -9,14 +9,56 @@ body {
   width: 97%;
 }
 
+.counter-of-rounds {
+  padding-right:4px;
+}
+
 .button-new-game,
 .button-repeat-sequence,
 .counter-of-rounds {
   visibility: hidden
 }
 
-.counter-of-rounds {
+.button-new-game {
+  display: block;
+  background-color: #32CD32;
+  color: white;
+  margin-left: -4px;
+  border-radius: 5px;
   padding-right:4px;
+  padding-left: 4px;
+  padding-top: 2px;
+  padding-bottom: 7px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.button-new-game:hover {
+  background-color: #28A428;
+}
+
+.button-new-game:active {
+  background-color: #1E7B1E;
+  transform: scale(0.95);
+}
+
+.button-next {
+  display: none;
+  background-color: #32CD32;
+  color: white;
+  border-radius: 5px;
+  padding: 2px 14px 7px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.button-next:hover {
+  background-color: #28A428;
+}
+
+.button-next:active {
+  background-color: #1E7B1E;
+  transform: scale(0.95);
 }
 
 .button-repeat-sequence {
@@ -28,10 +70,16 @@ body {
   padding-top: 2px;
   padding-bottom: 7px;
   cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .button-repeat-sequence:hover {
   background-color: #28A428;
+}
+
+.button-repeat-sequence:active {
+  background-color: #1E7B1E;
+  transform: scale(0.95);
 }
 
 .disabled {  /* добавляем к кнопке repeat sequance */
