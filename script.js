@@ -11,7 +11,7 @@ let audio = document.getElementById('click-sound');
 
 let alphabet = 'JBCGKAZFHYDILMNOPQSTUWERVX';
 let alphabetWithNums = 'J9A2H0F6NQK3G7M4B5D1L8IYZCEXWOSTUV';
-let level = '';
+let level = document.querySelector('.header__level-1__list .selected').innerHTML
 let round = 1;
 let sequence;
 let outputArray = [];
@@ -28,17 +28,35 @@ buttonNewGame.addEventListener('click', () => {
   [buttonNewGame, buttonRepeatSequence, counterOfRounds].forEach(item => {
     item.classList.toggle('display-on'); 
   })
+  buttonNext.style.display = 'none';
 
-  levelItems.forEach(item => {
+  levelItems.forEach(item => { // отменяет переключение уровней
     item.addEventListener('click', setLevelOfGame)
-  })
-  
+
+    if (!item.classList.contains('selected')) {  // меняет не активыне уровни цвет на серый
+      item.style.color = 'black';
+      item.style.cursor = 'pointer'
+    } else {
+      item.style.color = 'white';
+    }
+  });
+
+  // levelItems.forEach(item => {
+  //   item.addEventListener('click', setLevelOfGame)
+  // })
 })
 
 
 function setLevelOfGame(event) {
-  levelItems.forEach(item => item.classList.remove('selected'));
+  levelItems.forEach(item => {
+    item.classList.remove('selected');
+    item.style.color = 'black';
+    item.style.cursor = 'pointer';
+  })
+
   event.target.classList.add('selected');
+  event.target.style.color = 'white';
+
   level = event.target.innerHTML;
   let keyboardWihNumbers = document.querySelector('.keyboard-numbers')
   let keyboardWithLetters = document.querySelector('.keyboard-letters')
@@ -71,6 +89,8 @@ buttonStart.addEventListener('click', () => {
       levelItems.forEach(item => {
         item.style.cursor = 'default';
       });
+    } else {
+      item.style.color = 'white';
     }
   });
 
@@ -109,7 +129,10 @@ function runAGame() {
   } else if (level === 'medium') {
     sequence = Array.from({length: round * 2}, () => alphabet[Math.floor(Math.random() * alphabet.length)])
   } else if (level === 'hard') {
-    sequence = Array.from({length: round * 2}, () => alphabetWithNums[Math.floor(Math.random() * alphabetWithNums.length)])
+    sequence = Array.from({length: round * 2}, () => {
+      let randomChar = alphabetWithNums[Math.floor(Math.random() * alphabetWithNums.length)];
+      return isNaN(randomChar) ? randomChar : +randomChar;
+    })
   }
   console.log(`Round ${round}`, sequence);
   setTimeout(() => showSequance(), 600)
@@ -173,6 +196,10 @@ function timeForInput() {
 
     buttonRepeatSequence.classList.add('disabled');
     buttonRepeatSequence.style.pointerEvents = 'none';
+
+    // Удаляем обработчики событий перед повтором
+    keyboard[level].forEach(item => item.removeEventListener('click', clickOnKey));
+    document.removeEventListener('keydown', pressOnKey);
   }, { once: true });
 
 
@@ -226,7 +253,7 @@ function timeForInput() {
     keyboardOutput.textContent += input;
     outputArray.push(input);
 
-    // аккуратно с нулями
+    // аккуратно с нулями!
     if (String(sequence[counter]) !== String(outputArray[counter])) {
       keyboardOutput.style.color = 'red'; 
       showResult('WRONG', 'red', 'Try Again!');
@@ -239,6 +266,9 @@ function timeForInput() {
       
       buttonNext.addEventListener('click', proceedNextRound)
 
+      // Удаляем обработчики событий, когда игра закончена
+      keyboard[level].forEach(item => item.removeEventListener('click', clickOnKey));
+      document.removeEventListener('keydown', pressOnKey);
     } else {
       counter++;
     }

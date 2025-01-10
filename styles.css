@@ -120,11 +120,12 @@ body {
 
 
 
-.header__level-1__list .selected{
+.selected {
   background-color: #32CD32;
   border-radius: 5px;
   color: white;
 }
+
 
 .header__level-2 {
   margin-top: -20px;
