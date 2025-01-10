@@ -1,7 +1,11 @@
+body {
+  user-select: none;
+}
+
 .gameboard {
   /* border: 1px solid black; */
   border-radius: 20px;
-  margin: 5px auto; /* центрирует горизонтально */
+  margin: 5px auto;
   width: 97%;
 }
 
@@ -9,6 +13,31 @@
 .button-repeat-sequence,
 .counter-of-rounds {
   visibility: hidden
+}
+
+.counter-of-rounds {
+  padding-right:4px;
+}
+
+.button-repeat-sequence {
+  background-color: #32CD32;
+  color: white;
+  border-radius: 5px;
+  padding-right:4px;
+  padding-left: 4px;
+  padding-top: 2px;
+  padding-bottom: 7px;
+  cursor: pointer;
+}
+
+.button-repeat-sequence:hover {
+  background-color: #28A428;
+}
+
+.disabled {  /* добавляем к кнопке repeat sequance */
+  background-color: #a9a9a9;
+  color: #dcdcdc;
+  opacity: 0.6;
 }
 
 .display-on {
@@ -39,9 +68,14 @@
   cursor: pointer;
 }
 
+
+
+
+
 .header__level-1__list .selected{
   background-color: #32CD32;
   border-radius: 5px;
+  color: white;
 }
 
 .header__level-2 {

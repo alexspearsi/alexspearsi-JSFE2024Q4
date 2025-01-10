@@ -15,7 +15,7 @@ let level = '';
 let round = 1;
 let sequence;
 let outputArray = [];
-
+let isRepeatSequenceClicked  = false;
 
 
 
@@ -82,16 +82,16 @@ function runAGame() {
     sequence = Array.from({length: round * 2}, () => alphabetWithNums[Math.floor(Math.random() * alphabetWithNums.length)])
   }
   console.log(sequence);
+  setTimeout(() => showSequance(), 600)
+}
 
-  let completedTimers = 0; // отображает сколько таймеров выполнили работу
-                           // должно быть равно длины массива
-
-  // Мигание клавиш клавиатуры
-  setTimeout(() => {
+function showSequance() {
+  let completedTimers = 0;
   sequence.forEach((item, index) => {
     setTimeout(() => {
       let row = Array.from(document.querySelectorAll('.row'))
-      .flatMap(item => Array.from(item.children));
+                     .flatMap(item => Array.from(item.children));
+
       row.forEach(element => {
         if (element.innerHTML == item) {
           element.style.backgroundColor = 'red';
@@ -109,12 +109,13 @@ function runAGame() {
         }
       });
     }, index * 1300);
-  })}, 600)
+  })
+
 }
 
 
-
 function timeForInput() {
+  keyboardOutput.style.color = '#32CD32';
   let counter = 0;
   const symbolsOfKeyboard = Array.from(document.querySelectorAll('.row'))
                                  .flatMap(row => Array.from(row.children));
@@ -126,14 +127,36 @@ function timeForInput() {
   }
 
 
+  buttonRepeatSequence.addEventListener('click', () => {
+    if (!isRepeatSequenceClicked) {
+      isRepeatSequenceClicked = true;
+      outputArray = [];
+      keyboardOutput.innerHTML = '\u200B';
+      setTimeout(() => showSequance(), 600);
+    }
+
+    buttonRepeatSequence.classList.add('disabled');
+    buttonRepeatSequence.style.pointerEvents = 'none';
+  }, { once: true });
+
+
+
   // Показываем результат
-  function showResult(text, color) {
+  function showResult(text, color, finish) {
     keyboard[level].forEach(item => item.removeEventListener('click', clickOnKey));
     document.removeEventListener('keydown', pressOnKey);
-    setTimeout(() => {
-      keyboardOutput.innerHTML = text;
-      keyboardOutput.style.color = color;
-    }, 100);
+
+    if (text === "WRONG" && isRepeatSequenceClicked) {
+      setTimeout(() => {
+        keyboardOutput.innerHTML = finish;
+        keyboardOutput.style.color = color;
+      }, 0); // ДОБАВИТЬ ЗАДЕРЖКУ 100 СЕК, ЧТОБЫ ПОКАЗЫВАЛИСЬ ВСЕ БУКВЫ
+    } else {
+      setTimeout(() => {
+        keyboardOutput.innerHTML = text;
+        keyboardOutput.style.color = color;
+      }, 0); // ДОБАВИТЬ ЗАДЕРЖКУ 100 СЕК, ЧТОБЫ ПОКАЗЫВАЛИСЬ ВСЕ БУКВЫ
+    }
   }
 
   // Обработчик для виртуальной клавиатуры
@@ -155,9 +178,9 @@ function timeForInput() {
     console.log(outputArray);
 
     if (sequence[counter] != outputArray[counter]) {
-      showResult('WRONG', 'red');
+        showResult('WRONG', 'red', 'Try Again!');
     } else if ((counter + 1) === sequence.length) {
-      showResult('RIGHT', '32CD32');
+      showResult('RIGHT', '#32CD32', 'Congratulations! You won!');
     } else {
       counter++;
     }
