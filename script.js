@@ -289,13 +289,27 @@ function timeForInput() {
 
   // Обработчик для виртуальной клавиатуры
   function clickOnKey(event) {
+    keyboard[level].forEach(item => {
+      if (item.innerHTML == event.srcElement.innerHTML) {
+        audio.play()
+        item.style.backgroundColor = 'red';
+        setTimeout(() => item.style.backgroundColor = '', 150)
+      }
+    })
     processInput(event.target.innerHTML);
   }
 
   // Обработчик для механической клавиатуры
   function pressOnKey(event) {
     const key = event.key.toUpperCase();
-    const matchingKey = keyboard[level].find(item => item.innerHTML === key);
+    const matchingKey = keyboard[level].find(item => {
+      if (item.innerHTML === key) {
+        audio.play()
+        item.style.backgroundColor = 'red';
+        setTimeout(() => item.style.backgroundColor = '', 150)
+        return item.innerHTML === key
+      }
+    });
     if (matchingKey) processInput(key);
   }
 
