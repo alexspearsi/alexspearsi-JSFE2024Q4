@@ -259,31 +259,27 @@ function timeForInput() {
     document.removeEventListener('keydown', pressOnKey);
 
     if (text === "WRONG" && isRepeatSequenceClicked) {
-      setTimeout(() => {
-        audio2.play();
+        audio2.play(); // try again
         keyboardOutput.innerHTML = finish;
         keyboardOutput.style.color = color;
-      }, 0); // ДОБАВИТЬ ЗАДЕРЖКУ 100 СЕК, ЧТОБЫ ПОКАЗЫВАЛИСЬ ВСЕ БУКВЫ
+    } else if (text === "WRONG" && !isRepeatSequenceClicked) {
+        audio4.play() // wrong
+        keyboardOutput.innerHTML = text;
+        buttonNext.style.display = 'none';
+        buttonRepeatSequence.style.display = 'block';
     } else {
       setTimeout(() => {
         // Конец игры. Выиграл!
         if (round === 5) {
           keyboardOutput.innerHTML = finish;
-          if (finish === 'Try Again!') {
-            audio2.play();
-          } else {
-            audio3.play();
-          }
+          audio3.play();
           buttonNext.style.display = 'none';
           buttonRepeatSequence.style.display = 'block';
           buttonRepeatSequence.classList.add('disabled');
           buttonRepeatSequence.style.pointerEvents = 'none';
+
         } else {
-          if (text === 'WRONG') {
-            audio4.play()
-          } else {
-            audio5.play()
-          }
+          audio5.play();
           keyboardOutput.innerHTML = text;
           keyboardOutput.style.color = color;
         }
