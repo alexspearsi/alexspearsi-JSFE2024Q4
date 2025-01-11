@@ -63,10 +63,6 @@ buttonNewGame.addEventListener('click', () => {
       item.style.color = 'white';
     }
   });
-
-  // levelItems.forEach(item => {
-  //   item.addEventListener('click', setLevelOfGame)
-  // })
 })
 
 
@@ -137,7 +133,7 @@ function proceedNextRound() {
   runAGame();
 }
 
-//ЗАПУСК ИГРЫ
+// ЗАПУСК ИГРЫ
 function runAGame() {
   buttonNext.removeEventListener('click', proceedNextRound);
   // в начале игры показываем кнопку Repeat sequance и скрываем кнопку Next
@@ -238,7 +234,6 @@ function timeForInput() {
   keyboard['hard'].forEach(item => item.removeEventListener('click', clickOnKey));
   document.removeEventListener('keydown', pressOnKey);
 
-
   buttonRepeatSequence.addEventListener('click', () => {
     if (!isRepeatSequenceClicked) {
       outputArray = [];
@@ -253,20 +248,15 @@ function timeForInput() {
       }, 300);
     }
 
-
     // Удаляем обработчики событий перед повтором
     keyboard[level].forEach(item => item.removeEventListener('click', clickOnKey));
     document.removeEventListener('keydown', pressOnKey);
   }, { once: true });
 
-
-
   // Показываем результат
   function showResult(text, color, finish) {
     keyboard[level].forEach(item => item.removeEventListener('click', clickOnKey));
     document.removeEventListener('keydown', pressOnKey);
-
-
 
     if (text === "WRONG" && isRepeatSequenceClicked) {
       setTimeout(() => {
@@ -313,13 +303,11 @@ function timeForInput() {
     if (matchingKey) processInput(key);
   }
 
-
   // Общая логика обработки ввода
   function processInput(input) {
     keyboardOutput.textContent += input;
     outputArray.push(input);
 
-    // аккуратно с нулями!
     if (String(sequence[counter]) !== String(outputArray[counter])) {
       keyboardOutput.style.color = 'red'; 
       showResult('WRONG', 'red', 'Try Again!');
