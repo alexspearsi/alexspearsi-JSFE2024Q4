@@ -2,6 +2,10 @@ body {
   user-select: none;
 }
 
+p {
+  pointer-events: all;
+}
+
 .gameboard {
   /* border: 1px solid black; */
   border-radius: 20px;

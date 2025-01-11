@@ -10,6 +10,8 @@ let keyboardOutput = document.querySelector('.keyboard-output')
 let audio = document.getElementById('click-sound');
 let audio2 = document.getElementById('click-sound-2');
 let audio3 = document.getElementById('click-sound-3');
+let audio4 = document.getElementById('click-sound-4');
+let audio5 = document.getElementById('click-sound-5');
 
 let alphabet = 'JBCGKAZFHYDILMNOPQSTUWERVX';
 let alphabetWithNums = 'J9A2H0F6NQK3G7M4B5D1L8IYZCEXWOSTUV';
@@ -250,9 +252,12 @@ function timeForInput() {
           buttonRepeatSequence.style.display = 'block';
           buttonRepeatSequence.classList.add('disabled');
           buttonRepeatSequence.style.pointerEvents = 'none';
-
-          buttonNewGame
         } else {
+          if (text === 'WRONG') {
+            audio4.play()
+          } else {
+            audio5.play()
+          }
           keyboardOutput.innerHTML = text;
           keyboardOutput.style.color = color;
         }
