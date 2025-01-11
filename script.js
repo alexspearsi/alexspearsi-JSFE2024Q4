@@ -1,3 +1,9 @@
+console.log(
+  `%cDon't forget to change the language before typing letters!\n\n%cHave a good game!`, 
+  'font-weight: normal; color:rgb(229, 63, 63); font-size: 18px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;',  // Синий для уровня, более яркий шрифт
+  'font-weight: normal; color:rgba(65, 241, 106, 0.78); font-size: 26px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;'
+);
+
 let buttonStart = document.querySelector('.button-start');
 let buttonNewGame = document.querySelector('.button-new-game');
 let buttonRepeatSequence = document.querySelector('.button-repeat-sequence')
@@ -20,6 +26,19 @@ let round = 1;
 let sequence;
 let outputArray = [];
 let isRepeatSequenceClicked  = false;
+
+let keyboardWithNumbers = document.querySelector('.keyboard-numbers')
+let keyboardWithLetters = document.querySelector('.keyboard-letters')
+if (level === 'medium') {
+  keyboardWithNumbers.style.visibility = 'hidden'
+  keyboardWithLetters.style.visibility = 'visible'
+} else if (level === 'easy') {
+  keyboardWithLetters.style.visibility = 'hidden'
+  keyboardWithNumbers.style.visibility = 'visible'
+} else if (level === 'hard') {
+  keyboardWithLetters.style.visibility = 'visible'
+  keyboardWithNumbers.style.visibility = 'visible'
+}
 
 buttonNewGame.addEventListener('click', () => {
   round = 1;
@@ -74,7 +93,6 @@ function setLevelOfGame(event) {
     keyboardWithLetters.style.visibility = 'visible'
     keyboardWihNumbers.style.visibility = 'visible'
   }
-  console.log(level);
 }
 
 // Добавляет обработчик к уровням (easy, medium, hard)
@@ -138,7 +156,22 @@ function runAGame() {
       return isNaN(randomChar) ? randomChar : +randomChar;
     })
   }
-  console.log(`Round ${round}`, sequence);
+
+  console.clear();
+  console.log(
+    `%cLevel: %c${level} %c| Round: %c${round}`, 
+    'font-weight: bold; color: #2196F3; font-size: 20px; font-family: "Arial", sans-serif; letter-spacing: 2px;',  // Синий для уровня, более яркий шрифт
+    'font-weight: normal; color:rgb(146, 230, 11); font-size: 20px; font-family: "Arial", sans-serif;',  // Зеленый для значения уровня
+    'font-weight: bold; color: #2196F3; font-size: 20px; font-family: "Arial", sans-serif; letter-spacing: 2px;', // Синий для раунда
+    'font-weight: normal; color: rgb(146, 230, 11); font-size: 20px; font-family: "Arial", sans-serif;'   // Зеленый для значения раунда
+  );
+  
+  console.log(
+    `%cSequence: %c${sequence.join(' ')}`, 
+    'font-weight: bold; color: #FF7043; font-size: 22px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;',  // Оранжевый для текста "Sequence", стильный шрифт
+    'color:rgb(146, 230, 11); font-size: 20px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif; letter-spacing: 1px;'  // Ярко-красный для значений sequence
+  );
+  
   setTimeout(() => {
     // Во время симуляции глушить кнопки NEW GAME и REPEAT SEQUANCE
     buttonRepeatSequence.classList.add('disabled');
@@ -208,7 +241,6 @@ function timeForInput() {
 
   buttonRepeatSequence.addEventListener('click', () => {
     if (!isRepeatSequenceClicked) {
-      console.log('click');
       outputArray = [];
       isRepeatSequenceClicked = true;
       keyboardOutput.innerHTML = '\u200B';
@@ -247,7 +279,11 @@ function timeForInput() {
         // Конец игры. Выиграл!
         if (round === 5) {
           keyboardOutput.innerHTML = finish;
-          audio3.play();
+          if (finish === 'Try Again!') {
+            audio2.play();
+          } else {
+            audio3.play();
+          }
           buttonNext.style.display = 'none';
           buttonRepeatSequence.style.display = 'block';
           buttonRepeatSequence.classList.add('disabled');
