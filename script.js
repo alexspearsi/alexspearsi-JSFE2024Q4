@@ -20,7 +20,7 @@ let audio4 = document.getElementById('click-sound-4');
 let audio5 = document.getElementById('click-sound-5');
 
 let alphabet = 'JBCGKAZFHYDILMNOPQSTUWERVX';
-let alphabetWithNums = 'J9A2H0F6NQK3G7M4B5D1L8IYZCEXWOSTUV';
+let numbers = '12345667890';
 let level = document.querySelector('.header__level-1__list .selected').textContent
 let round = 1;
 let sequence;
@@ -147,10 +147,16 @@ function runAGame() {
   } else if (level === 'medium') {
     sequence = Array.from({length: round * 2}, () => alphabet[Math.floor(Math.random() * alphabet.length)])
   } else if (level === 'hard') {
-    sequence = Array.from({length: round * 2}, () => {
-      let randomChar = alphabetWithNums[Math.floor(Math.random() * alphabetWithNums.length)];
-      return isNaN(randomChar) ? randomChar : +randomChar;
-    })
+    sequence = [
+      alphabet[Math.floor(Math.random() * alphabet.length)],
+      +numbers[Math.floor(Math.random() * numbers.length)]
+    ];
+    
+    while (sequence.length < round * 2) {
+      let source = Math.random() < 0.5 ? alphabet : numbers;
+      let value = source[Math.floor(Math.random() * source.length)];
+      sequence.push(source === numbers ? +value : value); // Числа как number
+    }
   }
 
   console.clear();
