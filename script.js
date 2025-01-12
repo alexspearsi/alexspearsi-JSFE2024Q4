@@ -1,8 +1,141 @@
 console.log(
   `%cDon't forget to change the language before typing letters!\n\n%cHave a good game!`, 
-  'font-weight: normal; color:rgb(229, 63, 63); font-size: 18px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;',  // Синий для уровня, более яркий шрифт
+  'font-weight: normal; color:rgb(229, 63, 63); font-size: 18px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;',
   'font-weight: normal; color:rgba(65, 241, 106, 0.78); font-size: 26px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;'
 );
+
+function createAudioTag(id, src) {
+  let audio = document.createElement('audio')
+  audio.id = id;
+  audio.src = src;
+  document.body.appendChild(audio)
+  return audio;
+}
+
+let audio = createAudioTag('click-sound', "click.mp3");
+let audio2 = createAudioTag('click-sound-2', "try_again.mp3");
+let audio3 = createAudioTag('click-sound-3', "you_won.mp3");
+let audio4 = createAudioTag('click-sound-4', "wrong.mp3");
+let audio5 = createAudioTag('click-sound-5', "right.mp3");
+
+function createDOM() {
+  // gameboard
+  const gameboard = document.createElement('div');
+  gameboard.classList.add('gameboard');
+
+  // header
+  const header = document.createElement('div');
+  header.classList.add('header');
+
+  // header__level-1
+  const headerLevel1 = document.createElement('div');
+  headerLevel1.classList.add('header__level-1');
+
+  const level1List = document.createElement('ul');
+  level1List.classList.add('header__level-1__list');
+  ['easy', 'medium', 'hard'].forEach((text, index) => {
+    const li = document.createElement('li');
+    li.textContent = text;
+    if (index === 0) li.classList.add('selected');
+    level1List.appendChild(li);
+  });
+  headerLevel1.appendChild(level1List);
+
+ // создать rounds
+  const cntrOfRounds = document.createElement('p');
+  cntrOfRounds.classList.add('counter-of-rounds');
+  const textBefore = document.createTextNode('round ');
+  const roundSpan = document.createElement('span');
+  roundSpan.textContent = '1'; 
+  const textAfter = document.createTextNode('/5');
+  cntrOfRounds.appendChild(textBefore);
+  cntrOfRounds.appendChild(roundSpan);
+  cntrOfRounds.appendChild(textAfter);
+  headerLevel1.appendChild(cntrOfRounds);
+  header.appendChild(headerLevel1);
+
+  // header__level-2
+  const headerLevel2 = document.createElement('div');
+  headerLevel2.classList.add('header__level-2');
+
+  const buttonTexts = ['new game', 'repeat sequence', 'next'];
+
+  buttonTexts.forEach((text) => {
+    const button = document.createElement('p');
+    button.textContent = text; 
+    
+    const className = 'button-' + text.replace(' ', '-');
+    button.className = className;
+  
+    headerLevel2.appendChild(button);
+  });
+  header.appendChild(headerLevel2);
+
+  // добавить header в gameboard
+  gameboard.appendChild(header);
+
+  // main
+  const main = document.createElement('div');
+  main.classList.add('main');
+
+  const keybrdOutput = document.createElement('div');
+  keybrdOutput.classList.add('keyboard-output');
+  main.appendChild(keybrdOutput);
+
+  // keyboard-numbers
+  const keyboardNumbers = document.createElement('div');
+  keyboardNumbers.classList.add('keyboard-numbers');
+
+  const numberRow = document.createElement('div');
+  numberRow.classList.add('row');
+  const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+
+  numbers.forEach((num) => {
+    const key = document.createElement('div');
+    key.classList.add('key');
+    key.textContent = num;
+    numberRow.appendChild(key);
+  });
+  keyboardNumbers.appendChild(numberRow);
+  main.appendChild(keyboardNumbers);
+
+  // keyboard-letters
+  const keyboardLetters = document.createElement('div');
+  keyboardLetters.classList.add('keyboard-letters');
+
+  const rows = [
+    ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+    ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+    ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
+  ];
+
+  rows.forEach((letters) => {
+    const letterRow = document.createElement('div');
+    letterRow.classList.add('row');
+    letters.forEach((letter) => {
+      const key = document.createElement('div');
+      key.classList.add('key');
+      key.textContent = letter;
+      letterRow.appendChild(key);
+    });
+    keyboardLetters.appendChild(letterRow);
+  });
+  main.appendChild(keyboardLetters);
+
+  // Добавляем main в gameboard
+  gameboard.appendChild(main);
+
+  // Кнопка START
+  const btnStart = document.createElement('div');
+  btnStart.classList.add('button-start');
+  btnStart.textContent = 'START';
+  gameboard.appendChild(btnStart);
+
+  // Добавляем gameboard в body
+  document.body.appendChild(gameboard);
+}
+
+createDOM();
 
 let buttonStart = document.querySelector('.button-start');
 let buttonNewGame = document.querySelector('.button-new-game');
@@ -13,12 +146,6 @@ let numberOfRound = document.querySelector('.counter-of-rounds span');
 let levelItems = document.querySelectorAll('.header__level-1__list li')
 let keyboardOutput = document.querySelector('.keyboard-output')
     keyboardOutput.textContent = '\u200B'
-let audio = document.getElementById('click-sound');
-let audio2 = document.getElementById('click-sound-2');
-let audio3 = document.getElementById('click-sound-3');
-let audio4 = document.getElementById('click-sound-4');
-let audio5 = document.getElementById('click-sound-5');
-
 let alphabet = 'JBCGKAZFHYDILMNOPQSTUWERVX';
 let numbers = '12345667890';
 let level = document.querySelector('.header__level-1__list .selected').textContent
@@ -26,9 +153,9 @@ let round = 1;
 let sequence;
 let outputArray = [];
 let isRepeatSequenceClicked  = false;
-
 let keyboardWithNumbers = document.querySelector('.keyboard-numbers')
 let keyboardWithLetters = document.querySelector('.keyboard-letters')
+
 if (level === 'medium') {
   keyboardWithNumbers.style.visibility = 'hidden'
   keyboardWithLetters.style.visibility = 'visible'
@@ -64,7 +191,6 @@ buttonNewGame.addEventListener('click', () => {
     }
   });
 })
-
 
 function setLevelOfGame(event) {
   levelItems.forEach(item => {
@@ -162,16 +288,16 @@ function runAGame() {
   console.clear();
   console.log(
     `%cLevel: %c${level} %c| Round: %c${round}`, 
-    'font-weight: bold; color: #2196F3; font-size: 20px; font-family: "Arial", sans-serif; letter-spacing: 2px;',  // Синий для уровня, более яркий шрифт
-    'font-weight: normal; color:rgb(146, 230, 11); font-size: 20px; font-family: "Arial", sans-serif;',  // Зеленый для значения уровня
-    'font-weight: bold; color: #2196F3; font-size: 20px; font-family: "Arial", sans-serif; letter-spacing: 2px;', // Синий для раунда
-    'font-weight: normal; color: rgb(146, 230, 11); font-size: 20px; font-family: "Arial", sans-serif;'   // Зеленый для значения раунда
+    'font-weight: bold; color: #2196F3; font-size: 20px; font-family: "Arial", sans-serif; letter-spacing: 2px;',
+    'font-weight: normal; color:rgb(146, 230, 11); font-size: 20px; font-family: "Arial", sans-serif;',
+    'font-weight: bold; color: #2196F3; font-size: 20px; font-family: "Arial", sans-serif; letter-spacing: 2px;',
+    'font-weight: normal; color: rgb(146, 230, 11); font-size: 20px; font-family: "Arial", sans-serif;'
   );
   
   console.log(
     `%cSequence: %c${sequence.join(' ')}`, 
-    'font-weight: bold; color: #FF7043; font-size: 22px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;',  // Оранжевый для текста "Sequence", стильный шрифт
-    'color:rgb(146, 230, 11); font-size: 20px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif; letter-spacing: 1px;'  // Ярко-красный для значений sequence
+    'font-weight: bold; color: #FF7043; font-size: 22px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif;',
+    'color:rgb(146, 230, 11); font-size: 20px; font-family: "Roboto", "Helvetica Neue", Arial, sans-serif; letter-spacing: 1px;'
   );
   
   setTimeout(() => {
