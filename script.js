@@ -12,7 +12,7 @@ let counterOfRounds = document.querySelector('.counter-of-rounds')
 let numberOfRound = document.querySelector('.counter-of-rounds span');
 let levelItems = document.querySelectorAll('.header__level-1__list li')
 let keyboardOutput = document.querySelector('.keyboard-output')
-    keyboardOutput.innerHTML = '\u200B'
+    keyboardOutput.textContent = '\u200B'
 let audio = document.getElementById('click-sound');
 let audio2 = document.getElementById('click-sound-2');
 let audio3 = document.getElementById('click-sound-3');
@@ -21,7 +21,7 @@ let audio5 = document.getElementById('click-sound-5');
 
 let alphabet = 'JBCGKAZFHYDILMNOPQSTUWERVX';
 let alphabetWithNums = 'J9A2H0F6NQK3G7M4B5D1L8IYZCEXWOSTUV';
-let level = document.querySelector('.header__level-1__list .selected').innerHTML
+let level = document.querySelector('.header__level-1__list .selected').textContent
 let round = 1;
 let sequence;
 let outputArray = [];
@@ -43,9 +43,9 @@ if (level === 'medium') {
 buttonNewGame.addEventListener('click', () => {
   round = 1;
   outputArray = [];
-  keyboardOutput.innerHTML = '\u200B'
+  keyboardOutput.textContent = '\u200B'
   isRepeatSequenceClicked = false;
-  numberOfRound.innerHTML = 1;
+  numberOfRound.textContent = 1;
 
   buttonStart.style.visibility = 'visible';
   [buttonNewGame, buttonRepeatSequence, counterOfRounds].forEach(item => {
@@ -76,7 +76,7 @@ function setLevelOfGame(event) {
   event.target.classList.add('selected');
   event.target.style.color = 'white';
 
-  level = event.target.innerHTML;
+  level = event.target.textContent;
   let keyboardWihNumbers = document.querySelector('.keyboard-numbers')
   let keyboardWithLetters = document.querySelector('.keyboard-letters')
   if (level === 'medium') {
@@ -128,8 +128,8 @@ function proceedNextRound() {
   round += 1;
   outputArray = [];
   isRepeatSequenceClicked = false;
-  keyboardOutput.innerHTML = '\u200B';
-  numberOfRound.innerHTML = round;
+  keyboardOutput.textContent = '\u200B';
+  numberOfRound.textContent = round;
   runAGame();
 }
 
@@ -186,7 +186,7 @@ function showSequance() {
                      .flatMap(item => Array.from(item.children));
 
       row.forEach(element => {
-        if (element.innerHTML == item) {
+        if (element.textContent == item) {
           element.style.backgroundColor = 'red';
           audio.play();
           // Сбрасываем цвет обратно через 1000 мс
@@ -238,7 +238,7 @@ function timeForInput() {
     if (!isRepeatSequenceClicked) {
       outputArray = [];
       isRepeatSequenceClicked = true;
-      keyboardOutput.innerHTML = '\u200B';
+      keyboardOutput.textContent = '\u200B';
       setTimeout(() => {
         buttonRepeatSequence.classList.add('disabled');
         buttonRepeatSequence.style.pointerEvents = 'none';
@@ -260,18 +260,18 @@ function timeForInput() {
 
     if (text === "WRONG" && isRepeatSequenceClicked) {
         audio2.play(); // try again
-        keyboardOutput.innerHTML = finish;
+        keyboardOutput.textContent = finish;
         keyboardOutput.style.color = color;
     } else if (text === "WRONG" && !isRepeatSequenceClicked) {
         audio4.play() // wrong
-        keyboardOutput.innerHTML = text;
+        keyboardOutput.textContent = text;
         buttonNext.style.display = 'none';
         buttonRepeatSequence.style.display = 'block';
     } else {
       setTimeout(() => {
         // Конец игры. Выиграл!
         if (round === 5) {
-          keyboardOutput.innerHTML = finish;
+          keyboardOutput.textContent = finish;
           audio3.play();
           buttonNext.style.display = 'none';
           buttonRepeatSequence.style.display = 'block';
@@ -280,7 +280,7 @@ function timeForInput() {
 
         } else {
           audio5.play();
-          keyboardOutput.innerHTML = text;
+          keyboardOutput.textContent = text;
           keyboardOutput.style.color = color;
         }
       }, 0); // ДОБАВИТЬ ЗАДЕРЖКУ 100 СЕК, ЧТОБЫ ПОКАЗЫВАЛИСЬ ВСЕ БУКВЫ
@@ -290,24 +290,24 @@ function timeForInput() {
   // Обработчик для виртуальной клавиатуры
   function clickOnKey(event) {
     keyboard[level].forEach(item => {
-      if (item.innerHTML == event.srcElement.innerHTML) {
+      if (item.textContent == event.srcElement.textContent) {
         audio.play()
         item.style.backgroundColor = 'red';
         setTimeout(() => item.style.backgroundColor = '', 150)
       }
     })
-    processInput(event.target.innerHTML);
+    processInput(event.target.textContent);
   }
 
   // Обработчик для механической клавиатуры
   function pressOnKey(event) {
     const key = event.key.toUpperCase();
     const matchingKey = keyboard[level].find(item => {
-      if (item.innerHTML === key) {
+      if (item.textContent === key) {
         audio.play()
         item.style.backgroundColor = 'red';
         setTimeout(() => item.style.backgroundColor = '', 150)
-        return item.innerHTML === key
+        return item.textContent === key
       }
     });
     if (matchingKey) processInput(key);
