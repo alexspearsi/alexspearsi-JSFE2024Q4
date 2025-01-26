@@ -4,11 +4,459 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="normalize.css">
   <link rel="stylesheet" href="style.css"> 
 </head>
 <body>
-  
-
-<script src="./script.js"></script>
+    <div class="gameboard">
+      <div class="row clues">
+        <div class="cell top-hint" id="top-5-0"></div>
+        <div class="cell top-hint" id="top-5-1"></div>
+        <div class="cell top-hint" id="top-5-2"></div>
+        <div class="cell top-hint" id="top-5-3"></div>
+        <div class="cell top-hint" id="top-5-4"></div>
+        <div class="cell top-hint" id="top-5-5"></div>
+        <div class="cell top-hint" id="top-5-6"></div>
+        <div class="cell top-hint" id="top-5-7"></div>
+        <div class="cell top-hint" id="top-5-8"></div>
+        <div class="cell top-hint" id="top-5-9"></div>
+        <div class="cell top-hint" id="top-5-10"></div>
+        <div class="cell top-hint" id="top-5-11"></div>
+        <div class="cell top-hint" id="top-5-12"></div>
+        <div class="cell top-hint" id="top-5-13"></div>
+        <div class="cell top-hint" id="top-5-14"></div>
+      </div>
+      <div class="row clues">
+        <div class="cell top-hint" id="top-4-0"></div>
+        <div class="cell top-hint" id="top-4-1"></div>
+        <div class="cell top-hint" id="top-4-2"></div>
+        <div class="cell top-hint" id="top-4-3"></div>
+        <div class="cell top-hint" id="top-4-4"></div>
+        <div class="cell top-hint" id="top-4-5"></div>
+        <div class="cell top-hint" id="top-4-6"></div>
+        <div class="cell top-hint" id="top-4-7"></div>
+        <div class="cell top-hint" id="top-4-8"></div>
+        <div class="cell top-hint" id="top-4-9"></div>
+        <div class="cell top-hint" id="top-4-10"></div>
+        <div class="cell top-hint" id="top-4-11"></div>
+        <div class="cell top-hint" id="top-4-12"></div>
+        <div class="cell top-hint" id="top-4-13"></div>
+        <div class="cell top-hint" id="top-4-14"></div>
+      </div>
+      <div class="row clues">
+        <div class="cell top-hint" id="top-3-0"></div>
+        <div class="cell top-hint" id="top-3-1"></div>
+        <div class="cell top-hint" id="top-3-2"></div>
+        <div class="cell top-hint" id="top-3-3"></div>
+        <div class="cell top-hint" id="top-3-4"></div>
+        <div class="cell top-hint" id="top-3-5"></div>
+        <div class="cell top-hint" id="top-3-6"></div>
+        <div class="cell top-hint" id="top-3-7"></div>
+        <div class="cell top-hint" id="top-3-8"></div>
+        <div class="cell top-hint" id="top-3-9"></div>
+        <div class="cell top-hint" id="top-3-10"></div>
+        <div class="cell top-hint" id="top-3-11"></div>
+        <div class="cell top-hint" id="top-3-12"></div>
+        <div class="cell top-hint" id="top-3-13"></div>
+        <div class="cell top-hint" id="top-3-14"></div>
+      </div>
+      <div class="row clues">
+        <div class="cell top-hint" id="top-2-0"></div>
+        <div class="cell top-hint" id="top-2-1"></div>
+        <div class="cell top-hint" id="top-2-2"></div>
+        <div class="cell top-hint" id="top-2-3"></div>
+        <div class="cell top-hint" id="top-2-4"></div>
+        <div class="cell top-hint" id="top-2-5"></div>
+        <div class="cell top-hint" id="top-2-6"></div>
+        <div class="cell top-hint" id="top-2-7"></div>
+        <div class="cell top-hint" id="top-2-8"></div>
+        <div class="cell top-hint" id="top-2-9"></div>
+        <div class="cell top-hint" id="top-2-10"></div>
+        <div class="cell top-hint" id="top-2-11"></div>
+        <div class="cell top-hint" id="top-2-12"></div>
+        <div class="cell top-hint" id="top-2-13"></div>
+        <div class="cell top-hint" id="top-2-14"></div>
+      </div>
+      <div class="row clues">
+        <div class="cell top-hint" id="top-1-0"></div>
+        <div class="cell top-hint" id="top-1-1"></div>
+        <div class="cell top-hint" id="top-1-2"></div>
+        <div class="cell top-hint" id="top-1-3"></div>
+        <div class="cell top-hint" id="top-1-4"></div>
+        <div class="cell top-hint" id="top-1-5"></div>
+        <div class="cell top-hint" id="top-1-6"></div>
+        <div class="cell top-hint" id="top-1-7"></div>
+        <div class="cell top-hint" id="top-1-8"></div>
+        <div class="cell top-hint" id="top-1-9"></div>
+        <div class="cell top-hint" id="top-1-10"></div>
+        <div class="cell top-hint" id="top-1-11"></div>
+        <div class="cell top-hint" id="top-1-12"></div>
+        <div class="cell top-hint" id="top-1-13"></div>
+        <div class="cell top-hint" id="top-1-14"></div>
+      </div>
+      <div class="row clues">
+        <div class="cell top-hint" id="top-0-0"></div>
+        <div class="cell top-hint" id="top-0-1"></div>
+        <div class="cell top-hint" id="top-0-2"></div>
+        <div class="cell top-hint" id="top-0-3"></div>
+        <div class="cell top-hint" id="top-0-4"></div>
+        <div class="cell top-hint" id="top-0-5"></div>
+        <div class="cell top-hint" id="top-0-6"></div>
+        <div class="cell top-hint" id="top-0-7"></div>
+        <div class="cell top-hint" id="top-0-8"></div>
+        <div class="cell top-hint" id="top-0-9"></div>
+        <div class="cell top-hint" id="top-0-10"></div>
+        <div class="cell top-hint" id="top-0-11"></div>
+        <div class="cell top-hint" id="top-0-12"></div>
+        <div class="cell top-hint" id="top-0-13"></div>
+        <div class="cell top-hint" id="top-0-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-0"></div>
+        <div class="cell left-hint" id="left-4-0"></div>
+        <div class="cell left-hint" id="left-3-0"></div>
+        <div class="cell left-hint" id="left-2-0"></div>
+        <div class="cell left-hint" id="left-1-0"></div>
+        <div class="cell left-hint" id="left-0-0"></div>
+        <div class="cell" id="cell-0-0"></div>
+        <div class="cell" id="cell-0-1"></div>
+        <div class="cell" id="cell-0-2"></div>
+        <div class="cell" id="cell-0-3"></div>
+        <div class="cell" id="cell-0-4"></div>
+        <div class="cell" id="cell-0-5"></div>
+        <div class="cell" id="cell-0-6"></div>
+        <div class="cell" id="cell-0-7"></div>
+        <div class="cell" id="cell-0-8"></div>
+        <div class="cell" id="cell-0-9"></div>
+        <div class="cell" id="cell-0-10"></div>
+        <div class="cell" id="cell-0-11"></div>
+        <div class="cell" id="cell-0-12"></div>
+        <div class="cell" id="cell-0-13"></div>
+        <div class="cell" id="cell-0-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-1"></div>
+        <div class="cell left-hint" id="left-4-1"></div>
+        <div class="cell left-hint" id="left-3-1"></div>
+        <div class="cell left-hint" id="left-2-1"></div>
+        <div class="cell left-hint" id="left-1-1"></div>
+        <div class="cell left-hint" id="left-0-1"></div>
+        <div class="cell" id="cell-1-0"></div>
+        <div class="cell" id="cell-1-1"></div>
+        <div class="cell" id="cell-1-2"></div>
+        <div class="cell" id="cell-1-3"></div>
+        <div class="cell" id="cell-1-4"></div>
+        <div class="cell" id="cell-1-5"></div>
+        <div class="cell" id="cell-1-6"></div>
+        <div class="cell" id="cell-1-7"></div>
+        <div class="cell" id="cell-1-8"></div>
+        <div class="cell" id="cell-1-9"></div>
+        <div class="cell" id="cell-1-10"></div>
+        <div class="cell" id="cell-1-11"></div>
+        <div class="cell" id="cell-1-12"></div>
+        <div class="cell" id="cell-1-13"></div>
+        <div class="cell" id="cell-1-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-2"></div>
+        <div class="cell left-hint" id="left-4-2"></div>
+        <div class="cell left-hint" id="left-3-2"></div>
+        <div class="cell left-hint" id="left-2-2"></div>
+        <div class="cell left-hint" id="left-1-2"></div>
+        <div class="cell left-hint" id="left-0-2"></div>
+        <div class="cell" id="cell-2-0"></div>
+        <div class="cell" id="cell-2-1"></div>
+        <div class="cell" id="cell-2-2"></div>
+        <div class="cell" id="cell-2-3"></div>
+        <div class="cell" id="cell-2-4"></div>
+        <div class="cell" id="cell-2-5"></div>
+        <div class="cell" id="cell-2-6"></div>
+        <div class="cell" id="cell-2-7"></div>
+        <div class="cell" id="cell-2-8"></div>
+        <div class="cell" id="cell-2-9"></div>
+        <div class="cell" id="cell-2-10"></div>
+        <div class="cell" id="cell-2-11"></div>
+        <div class="cell" id="cell-2-12"></div>
+        <div class="cell" id="cell-2-13"></div>
+        <div class="cell" id="cell-2-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-3"></div>
+        <div class="cell left-hint" id="left-4-3"></div>
+        <div class="cell left-hint" id="left-3-3"></div>
+        <div class="cell left-hint" id="left-2-3"></div>
+        <div class="cell left-hint" id="left-1-3"></div>
+        <div class="cell left-hint" id="left-0-3"></div>
+        <div class="cell" id="cell-3-0"></div>
+        <div class="cell" id="cell-3-1"></div>
+        <div class="cell" id="cell-3-2"></div>
+        <div class="cell" id="cell-3-3"></div>
+        <div class="cell" id="cell-3-4"></div>
+        <div class="cell" id="cell-3-5"></div>
+        <div class="cell" id="cell-3-6"></div>
+        <div class="cell" id="cell-3-7"></div>
+        <div class="cell" id="cell-3-8"></div>
+        <div class="cell" id="cell-3-9"></div>
+        <div class="cell" id="cell-3-10"></div>
+        <div class="cell" id="cell-3-11"></div>
+        <div class="cell" id="cell-3-12"></div>
+        <div class="cell" id="cell-3-13"></div>
+        <div class="cell" id="cell-3-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-4"></div>
+        <div class="cell left-hint" id="left-4-4"></div>
+        <div class="cell left-hint" id="left-3-4"></div>
+        <div class="cell left-hint" id="left-2-4"></div>
+        <div class="cell left-hint" id="left-1-4"></div>
+        <div class="cell left-hint" id="left-0-4"></div>
+        <div class="cell" id="cell-4-0"></div>
+        <div class="cell" id="cell-4-1"></div>
+        <div class="cell" id="cell-4-2"></div>
+        <div class="cell" id="cell-4-3"></div>
+        <div class="cell" id="cell-4-4"></div>
+        <div class="cell" id="cell-4-5"></div>
+        <div class="cell" id="cell-4-6"></div>
+        <div class="cell" id="cell-4-7"></div>
+        <div class="cell" id="cell-4-8"></div>
+        <div class="cell" id="cell-4-9"></div>
+        <div class="cell" id="cell-4-10"></div>
+        <div class="cell" id="cell-4-11"></div>
+        <div class="cell" id="cell-4-12"></div>
+        <div class="cell" id="cell-4-13"></div>
+        <div class="cell" id="cell-4-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-5"></div>
+        <div class="cell left-hint" id="left-4-5"></div>
+        <div class="cell left-hint" id="left-3-5"></div>
+        <div class="cell left-hint" id="left-2-5"></div>
+        <div class="cell left-hint" id="left-1-5"></div>
+        <div class="cell left-hint" id="left-0-5"></div>
+        <div class="cell" id="cell-5-0"></div>
+        <div class="cell" id="cell-5-1"></div>
+        <div class="cell" id="cell-5-2"></div>
+        <div class="cell" id="cell-5-3"></div>
+        <div class="cell" id="cell-5-4"></div>
+        <div class="cell" id="cell-5-5"></div>
+        <div class="cell" id="cell-5-6"></div>
+        <div class="cell" id="cell-5-7"></div>
+        <div class="cell" id="cell-5-8"></div>
+        <div class="cell" id="cell-5-9"></div>
+        <div class="cell" id="cell-5-10"></div>
+        <div class="cell" id="cell-5-11"></div>
+        <div class="cell" id="cell-5-12"></div>
+        <div class="cell" id="cell-5-13"></div>
+        <div class="cell" id="cell-5-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-6"></div>
+        <div class="cell left-hint" id="left-4-6"></div>
+        <div class="cell left-hint" id="left-3-6"></div>
+        <div class="cell left-hint" id="left-2-6"></div>
+        <div class="cell left-hint" id="left-1-6"></div>
+        <div class="cell left-hint" id="left-0-6"></div>
+        <div class="cell" id="cell-6-0"></div>
+        <div class="cell" id="cell-6-1"></div>
+        <div class="cell" id="cell-6-2"></div>
+        <div class="cell" id="cell-6-3"></div>
+        <div class="cell" id="cell-6-4"></div>
+        <div class="cell" id="cell-6-5"></div>
+        <div class="cell" id="cell-6-6"></div>
+        <div class="cell" id="cell-6-7"></div>
+        <div class="cell" id="cell-6-8"></div>
+        <div class="cell" id="cell-6-9"></div>
+        <div class="cell" id="cell-6-10"></div>
+        <div class="cell" id="cell-6-11"></div>
+        <div class="cell" id="cell-6-12"></div>
+        <div class="cell" id="cell-6-13"></div>
+        <div class="cell" id="cell-6-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-7"></div>
+        <div class="cell left-hint" id="left-4-7"></div>
+        <div class="cell left-hint" id="left-3-7"></div>
+        <div class="cell left-hint" id="left-2-7"></div>
+        <div class="cell left-hint" id="left-1-7"></div>
+        <div class="cell left-hint" id="left-0-7"></div>
+        <div class="cell" id="cell-7-0"></div>
+        <div class="cell" id="cell-7-1"></div>
+        <div class="cell" id="cell-7-2"></div>
+        <div class="cell" id="cell-7-3"></div>
+        <div class="cell" id="cell-7-4"></div>
+        <div class="cell" id="cell-7-5"></div>
+        <div class="cell" id="cell-7-6"></div>
+        <div class="cell" id="cell-7-7"></div>
+        <div class="cell" id="cell-7-8"></div>
+        <div class="cell" id="cell-7-9"></div>
+        <div class="cell" id="cell-7-10"></div>
+        <div class="cell" id="cell-7-11"></div>
+        <div class="cell" id="cell-7-12"></div>
+        <div class="cell" id="cell-7-13"></div>
+        <div class="cell" id="cell-7-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-8"></div>
+        <div class="cell left-hint" id="left-4-8"></div>
+        <div class="cell left-hint" id="left-3-8"></div>
+        <div class="cell left-hint" id="left-2-8"></div>
+        <div class="cell left-hint" id="left-1-8"></div>
+        <div class="cell left-hint" id="left-0-8"></div>
+        <div class="cell" id="cell-8-0"></div>
+        <div class="cell" id="cell-8-1"></div>
+        <div class="cell" id="cell-8-2"></div>
+        <div class="cell" id="cell-8-3"></div>
+        <div class="cell" id="cell-8-4"></div>
+        <div class="cell" id="cell-8-5"></div>
+        <div class="cell" id="cell-8-6"></div>
+        <div class="cell" id="cell-8-7"></div>
+        <div class="cell" id="cell-8-8"></div>
+        <div class="cell" id="cell-8-9"></div>
+        <div class="cell" id="cell-8-10"></div>
+        <div class="cell" id="cell-8-11"></div>
+        <div class="cell" id="cell-8-12"></div>
+        <div class="cell" id="cell-8-13"></div>
+        <div class="cell" id="cell-8-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-9"></div>
+        <div class="cell left-hint" id="left-4-9"></div>
+        <div class="cell left-hint" id="left-3-9"></div>
+        <div class="cell left-hint" id="left-2-9"></div>
+        <div class="cell left-hint" id="left-1-9"></div>
+        <div class="cell left-hint" id="left-0-9"></div>
+        <div class="cell" id="cell-9-0"></div>
+        <div class="cell" id="cell-9-1"></div>
+        <div class="cell" id="cell-9-2"></div>
+        <div class="cell" id="cell-9-3"></div>
+        <div class="cell" id="cell-9-4"></div>
+        <div class="cell" id="cell-9-5"></div>
+        <div class="cell" id="cell-9-6"></div>
+        <div class="cell" id="cell-9-7"></div>
+        <div class="cell" id="cell-9-8"></div>
+        <div class="cell" id="cell-9-9"></div>
+        <div class="cell" id="cell-9-10"></div>
+        <div class="cell" id="cell-9-11"></div>
+        <div class="cell" id="cell-9-12"></div>
+        <div class="cell" id="cell-9-13"></div>
+        <div class="cell" id="cell-9-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-10"></div>
+        <div class="cell left-hint" id="left-4-10"></div>
+        <div class="cell left-hint" id="left-3-10"></div>
+        <div class="cell left-hint" id="left-2-10"></div>
+        <div class="cell left-hint" id="left-1-10"></div>
+        <div class="cell left-hint" id="left-0-10"></div>
+        <div class="cell" id="cell-10-0"></div>
+        <div class="cell" id="cell-10-1"></div>
+        <div class="cell" id="cell-10-2"></div>
+        <div class="cell" id="cell-10-3"></div>
+        <div class="cell" id="cell-10-4"></div>
+        <div class="cell" id="cell-10-5"></div>
+        <div class="cell" id="cell-10-6"></div>
+        <div class="cell" id="cell-10-7"></div>
+        <div class="cell" id="cell-10-8"></div>
+        <div class="cell" id="cell-10-9"></div>
+        <div class="cell" id="cell-10-10"></div>
+        <div class="cell" id="cell-10-11"></div>
+        <div class="cell" id="cell-10-12"></div>
+        <div class="cell" id="cell-10-13"></div>
+        <div class="cell" id="cell-10-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-11"></div>
+        <div class="cell left-hint" id="left-4-11"></div>
+        <div class="cell left-hint" id="left-3-11"></div>
+        <div class="cell left-hint" id="left-2-11"></div>
+        <div class="cell left-hint" id="left-1-11"></div>
+        <div class="cell left-hint" id="left-0-11"></div>
+        <div class="cell" id="cell-11-0"></div>
+        <div class="cell" id="cell-11-1"></div>
+        <div class="cell" id="cell-11-2"></div>
+        <div class="cell" id="cell-11-3"></div>
+        <div class="cell" id="cell-11-4"></div>
+        <div class="cell" id="cell-11-5"></div>
+        <div class="cell" id="cell-11-6"></div>
+        <div class="cell" id="cell-11-7"></div>
+        <div class="cell" id="cell-11-8"></div>
+        <div class="cell" id="cell-11-9"></div>
+        <div class="cell" id="cell-11-10"></div>
+        <div class="cell" id="cell-11-11"></div>
+        <div class="cell" id="cell-11-12"></div>
+        <div class="cell" id="cell-11-13"></div>
+        <div class="cell" id="cell-11-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-12"></div>
+        <div class="cell left-hint" id="left-4-12"></div>
+        <div class="cell left-hint" id="left-3-12"></div>
+        <div class="cell left-hint" id="left-2-12"></div>
+        <div class="cell left-hint" id="left-1-12"></div>
+        <div class="cell left-hint" id="left-0-12"></div>
+        <div class="cell" id="cell-12-0"></div>
+        <div class="cell" id="cell-12-1"></div>
+        <div class="cell" id="cell-12-2"></div>
+        <div class="cell" id="cell-12-3"></div>
+        <div class="cell" id="cell-12-4"></div>
+        <div class="cell" id="cell-12-5"></div>
+        <div class="cell" id="cell-12-6"></div>
+        <div class="cell" id="cell-12-7"></div>
+        <div class="cell" id="cell-12-8"></div>
+        <div class="cell" id="cell-12-9"></div>
+        <div class="cell" id="cell-12-10"></div>
+        <div class="cell" id="cell-12-11"></div>
+        <div class="cell" id="cell-12-12"></div>
+        <div class="cell" id="cell-12-13"></div>
+        <div class="cell" id="cell-12-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-13"></div>
+        <div class="cell left-hint" id="left-4-13"></div>
+        <div class="cell left-hint" id="left-3-13"></div>
+        <div class="cell left-hint" id="left-2-13"></div>
+        <div class="cell left-hint" id="left-1-13"></div>
+        <div class="cell left-hint" id="left-0-13"></div>
+        <div class="cell" id="cell-13-0"></div>
+        <div class="cell" id="cell-13-1"></div>
+        <div class="cell" id="cell-13-2"></div>
+        <div class="cell" id="cell-13-3"></div>
+        <div class="cell" id="cell-13-4"></div>
+        <div class="cell" id="cell-13-5"></div>
+        <div class="cell" id="cell-13-6"></div>
+        <div class="cell" id="cell-13-7"></div>
+        <div class="cell" id="cell-13-8"></div>
+        <div class="cell" id="cell-13-9"></div>
+        <div class="cell" id="cell-13-10"></div>
+        <div class="cell" id="cell-13-11"></div>
+        <div class="cell" id="cell-13-12"></div>
+        <div class="cell" id="cell-13-13"></div>
+        <div class="cell" id="cell-13-14"></div>
+      </div>
+      <div class="row">
+        <div class="cell left-hint" id="left-5-14"></div>
+        <div class="cell left-hint" id="left-4-14"></div>
+        <div class="cell left-hint" id="left-3-14"></div>
+        <div class="cell left-hint" id="left-2-14"></div>
+        <div class="cell left-hint" id="left-1-14"></div>
+        <div class="cell left-hint" id="left-0-14"></div>
+        <div class="cell" id="cell-14-0"></div>
+        <div class="cell" id="cell-14-1"></div>
+        <div class="cell" id="cell-14-2"></div>
+        <div class="cell" id="cell-14-3"></div>
+        <div class="cell" id="cell-14-4"></div>
+        <div class="cell" id="cell-14-5"></div>
+        <div class="cell" id="cell-14-6"></div>
+        <div class="cell" id="cell-14-7"></div>
+        <div class="cell" id="cell-14-8"></div>
+        <div class="cell" id="cell-14-9"></div>
+        <div class="cell" id="cell-14-10"></div>
+        <div class="cell" id="cell-14-11"></div>
+        <div class="cell" id="cell-14-12"></div>
+        <div class="cell" id="cell-14-13"></div>
+        <div class="cell" id="cell-14-14"></div>
+      </div>
+    </div>
+  <script src="./script.js" type="module"></script>
 </body>
 </html>
