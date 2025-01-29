@@ -3,8 +3,11 @@ import { createNonogram } from './CreateNonogram.js';
 
 
 let currentGame = levelOfGame[['hard']][Math.floor(Math.random() * 5)]
-createNonogram(currentGame.level, currentGame.name)
 
+createNonogram(currentGame.level, currentGame.name)
+createModalWindow()
+createSolutionButton();
+createRandomButton()
 
 
 function createModalWindow() {
@@ -116,9 +119,6 @@ function createModalWindow() {
     })
   })
 }
-createModalWindow()
-
-
 function createSolutionButton() {
   const collectionOfCells = Object.fromEntries(
     Array.from(document.querySelectorAll('[id^="cell-"]'))
@@ -127,7 +127,11 @@ function createSolutionButton() {
 
   const btnSolution = document.querySelector('.utility-item--solution');
   btnSolution.addEventListener('click', () => {
-    console.log(currentGame);
+
+    document.querySelectorAll('[id^="cell-"]').forEach(item => {
+      item.style.backgroundColor = 'white';
+      item.innerHTML = '';
+    })
 
     const elementsToUpdate = [];
     currentGame.solution.forEach((row, rowIndex) => {
@@ -145,26 +149,77 @@ function createSolutionButton() {
     elementsToUpdate.forEach(el => el.style.backgroundColor = 'black');
   });
 }
-createSolutionButton();
-
 
 function createRandomButton() {
   const btnRandom = document.querySelector('.utility-item--random-game');
   btnRandom.addEventListener('click', () => {
-
+    
     let cells = document.querySelectorAll('.cell')
     cells.forEach(item => {
       if (item.style.backgroundColor === 'black') {
         item.style.backgroundColor = 'white';
-        console.log('yes');
+      }
+      if (item.innerText !== '') {
+        item.innerText = '';
       }
     })
-
-    currentGame = levelOfGame['hard'][Math.floor(Math.random() * 5)]
+    
+    currentGame = levelOfGame['easy'][Math.floor(Math.random() * 5)]
     console.log(currentGame.level);
-    createNonogram(currentGame.level, currentGame.name)
+    
 
+    createNonogram(currentGame.level, currentGame.name)
+    
   })
 }
 
-createRandomButton()
+
+
+
+let emptyArrayHard = Array.from({length: 15}, () => Array(15).fill(0));
+let emptyArrayMedium = Array.from({length: 10}, () => Array(10).fill(0));
+let emptyArrayEasy = Array.from({ length: 5 }, () => Array(5).fill(0));
+
+let jointArrayObj = {
+  'easy': emptyArrayEasy,
+  'medium': emptyArrayMedium,
+  'hard': emptyArrayHard
+}
+
+function isSolutionCorrect(playerArray, solutionArray) {
+  return playerArray.every((row, i) =>
+    row.every((cell, j) => cell === solutionArray[i][j])
+  );
+}
+
+// выбор нажатия на игравое поле (черные)
+document.querySelector('.gameboard').addEventListener('click', (event) => {
+  console.log(currentGame.name);
+  if (event.target.matches('[id^="cell-"]')) {
+    event.target.style.backgroundColor = event.target.style.backgroundColor === 'black' ? 'white' : 'black';
+
+    let row = event.target.id.split('-')[1]
+    let column = event.target.id.split('-')[2]
+    jointArrayObj[currentGame.level][row][column] = jointArrayObj[currentGame.level][row][column] === 1 ? 0 : 1;
+    console.clear()
+    console.log(currentGame.name);
+    console.log(jointArrayObj[currentGame.level]);
+    if (isSolutionCorrect(jointArrayObj[currentGame.level], currentGame.solution)) {
+      emptyArrayHard = Array.from({length: 15}, () => Array(15).fill(0));
+      emptyArrayMedium = Array.from({length: 10}, () => Array(10).fill(0));
+      emptyArrayEasy = Array.from({ length: 5 }, () => Array(5).fill(0));
+      console.log('победа');
+    }
+  }
+});
+
+
+// выбор нажатия на игравое поле (крестики)
+document.addEventListener('contextmenu', (event) => {
+  if (event.target.matches('[id^="cell-"]')) {
+    event.preventDefault();
+    if (event.target.style.backgroundColor !== 'black') {
+      event.target.innerText = event.target.innerText === 'X' ? '' : 'X';
+    }
+  }
+});

@@ -7,21 +7,21 @@
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
-  justify-content: center;
+  justify-content: center; /* Центрирует по горизонтали */
+  align-items: center; /* Центрирует по вертикали */
   z-index: 1000;
 }
 
 .modal-window {
-  margin-top: 5%;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 560px;
+  width: 480px; /* Задай ширину, иначе `flex` не центрирует */
+  height: 430px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-  padding: 0 100px;
 }
 
 .modal-levels {
@@ -32,7 +32,7 @@
 .level-item,
 .level-title {
   padding: 0 30px;
-  font-size: 26px;
+  font-size: 20px;
   text-align: center;
   font-weight: 300;
 }
@@ -42,14 +42,14 @@
 }
 
 .modal-title {
-  font-size: 36px;
+  font-size: 32px;
   font-weight: 500;
 }
 
 .modal-close-btn {
   position: absolute;
-  right: 15px;
-  top: 15px;
+  right: 2px;
+  top: 5px;
   width: 35px;
   cursor: pointer;
 }
