@@ -3,11 +3,49 @@ body {
   height: 100vh;
 }
 
-.gameboard {
-  padding-top: 20px;
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameboard-wrapper {
   border-radius: 20px;
-  margin: 5px auto;
-  width: calc(30px * 20);
+}
+
+.gameboard {
+  border-radius: 20px;
+  margin: -11px -48px -51px;
+}
+
+.utilities-wrapper {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: 680px;
+  min-width: 480px;
+  width: 80%;
+  background-color: rgba(209, 198, 198, 0.24);
+  border-radius: 20px;
+}
+
+.utilities {
+  display: flex;
+  justify-content: space-around;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.utility-item {
+  width: 122px;
+  padding: 5px;
+  margin: 8px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: pointer;
+  height: 30px;
+  text-align: center;
 }
 
 .row {
@@ -21,12 +59,11 @@ body {
 }
 
 .cell {
-  width: 30px;
-  height: 30px;
+  width: 23px;
+  height: 23px;
   background-color: rgb(255, 255, 255);
   outline: 1px solid rgba(129, 126, 126, 0.383);
 }
-
 
 #cell-0-4, #cell-1-4, #cell-2-4, #cell-3-4, #cell-4-4, #cell-5-4, #cell-6-4, #cell-7-4,
 #cell-8-4, #cell-9-4, #cell-10-4, #cell-11-4, #cell-12-4, #cell-13-4, #cell-14-4, #cell-0-9,
@@ -38,7 +75,6 @@ body {
 #top-3-14, #top-4-14, #top-5-14 {
   border-right: 2px solid black;
 }
-
 
 #cell-0-0, #cell-1-0, #cell-2-0, #cell-3-0, #cell-4-0, #cell-5-0, #cell-6-0, #cell-7-0, #cell-8-0,
 #cell-9-0, #cell-10-0, #cell-11-0, #cell-12-0, #cell-13-0, #cell-14-0, #top-0-0, #top-1-0, #top-2-0, 
@@ -65,3 +101,10 @@ body {
 #top-4-6, #top-4-7, #top-4-8, #top-4-9, #top-4-10, #top-4-11, #top-4-12, #top-4-13, #top-4-14 {
   border-top: 2px solid black;
 }
+
+.gameboard-buttons-below {
+  display: flex;
+  margin: 70px 22px 0 20px
+}
+
+

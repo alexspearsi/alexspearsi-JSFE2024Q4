@@ -1,6 +1,7 @@
 const lvlHard = [
   { 
     name: 'Ice Cream',
+    level: 'hard',
     rowsHints: {
       0: [5],
       1: [2, 4],
@@ -55,6 +56,7 @@ const lvlHard = [
   },
   {
     name: 'Raccoon',
+    level: 'hard',
     rowsHints: {
       0: [1, 3, 1, 3, 1],
       1: [5, 5],
@@ -109,6 +111,7 @@ const lvlHard = [
   },
   {
     name: 'Alien',
+    level: 'hard',
     rowsHints: {
       0: [9],
       1: [2, 1],
@@ -163,6 +166,7 @@ const lvlHard = [
   },
   {
     name: 'Cactus',
+    level: 'hard',
     rowsHints: {
       0: [2],
       1: [2, 1, 2],
@@ -217,6 +221,7 @@ const lvlHard = [
   },
   {
     name: 'Strawberry',
+    level: 'hard',
     rowsHints: {
       0: [4],
       1: [1, 2],
@@ -274,6 +279,7 @@ const lvlHard = [
 const lvlMedium = [
   { 
     name: 'Chicken',
+    level: 'medium',
     rowsHints: {
       0: [3],
       1: [1, 2],
@@ -313,6 +319,7 @@ const lvlMedium = [
   },
   {
     name: 'Penguin',
+    level: 'medium',
     rowsHints: {
       0: [6],
       1: [8],
@@ -352,6 +359,7 @@ const lvlMedium = [
   },
   {
     name: 'Mushroom',
+    level: 'medium',
     rowsHints: {
       0: [5],
       1: [3, 3],
@@ -391,6 +399,7 @@ const lvlMedium = [
   },
   {
     name: 'Coffee',
+    level: 'medium',
     rowsHints: {
       0: [1, 2],
       1: [1, 1],
@@ -430,6 +439,7 @@ const lvlMedium = [
   },
   {
     name: 'Puppy',
+    level: 'medium',
     rowsHints: {
       0: [4],
       1: [1, 3],
@@ -472,6 +482,7 @@ const lvlMedium = [
 const lvlEasy = [
   { 
     name: 'Dino',
+    level: 'easy',
     rowsHints: {
       0: [1, 2],
       1: [1],
@@ -496,6 +507,7 @@ const lvlEasy = [
   },
   {
     name: 'Clown',
+    level: 'easy',
     rowsHints: {
       0: [2, 2],
       1: [1, 1],
@@ -520,6 +532,7 @@ const lvlEasy = [
   },
   {
     name: 'Camel',
+    level: 'easy',
     rowsHints: {
       0: [2],
       1: [1, 2],
@@ -544,6 +557,7 @@ const lvlEasy = [
   },
   {
     name: 'Kitten',
+    level: 'easy',
     rowsHints: {
       0: [1, 1],
       1: [3],
@@ -568,6 +582,7 @@ const lvlEasy = [
   },
   {
     name: 'Tree',
+    level: 'easy',
     rowsHints: {
       0: [1],
       1: [3],

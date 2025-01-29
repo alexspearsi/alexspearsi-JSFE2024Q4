@@ -1,0 +1,59 @@
+.modal-overlay {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-window {
+  margin-top: 5%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 560px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  padding: 0 100px;
+}
+
+.modal-levels {
+  display: flex;
+  justify-content: space-between;
+}
+
+.level-item,
+.level-title {
+  padding: 0 30px;
+  font-size: 26px;
+  text-align: center;
+  font-weight: 300;
+}
+
+.level-item {
+  cursor: pointer;
+}
+
+.modal-title {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+.modal-close-btn {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  width: 35px;
+  cursor: pointer;
+}
+
+.level-title {
+  font-weight: 500;;
+}
