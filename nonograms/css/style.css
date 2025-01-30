@@ -16,6 +16,12 @@ body {
 .gameboard {
   border-radius: 20px;
   margin: -11px -48px -51px;
+  opacity: 0; /* Начальное состояние */
+  transition: opacity 1s ease-out; /* Плавное изменение */
+}
+
+.gameboard.visible {
+  opacity: 1;
 }
 
 .utilities-wrapper {
