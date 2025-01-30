@@ -1,11 +1,13 @@
 import { levelOfGame } from './templates.js';
 import { createNonogram } from './CreateNonogram.js';
 
+
 let timerInterval = null;
 let startTime = null;
 
 let currentGame = levelOfGame[['easy']][Math.floor(Math.random() * 5)]
 document.querySelector('.gameboard').classList.add('visible');
+
 
 const gameboard = document.querySelector('.gameboard')
 const style = document.createElement('style');
@@ -13,6 +15,79 @@ const chooseAGame = document.querySelector('.utility-item--choose-game')
 const closeModalWindow = document.querySelector('.modal-close-btn')
 const modalWindow = document.querySelector('.modal-overlay')
 const gameboardButtonsBelow = document.querySelector('.gameboard-buttons-below')
+const modalWin = document.querySelector('.modal-overlay-win');
+const modalWinClose = document.querySelector('.modal-close-btn-win');
+const timeWindow = document.querySelector('.utility-item--timer');
+const [minutes, seconds] = timeWindow.children
+const utilityItem = document.querySelectorAll('.utility-item')
+const resetTheGameBtn = document.querySelector('.utility-item--reset-game')
+
+let jointArrayObj = {
+  'easy': Array.from({ length: 5 }, () => Array(5).fill(0)),
+  'medium': Array.from({ length: 10 }, () => Array(10).fill(0)),
+  'hard': Array.from({ length: 15 }, () => Array(15).fill(0))
+}
+
+
+
+resetTheGameBtn.addEventListener('click', () => {
+  jointArrayObj['hard'] = Array.from({ length: 15 }, () => Array(15).fill(0));
+  jointArrayObj['medium'] = Array.from({ length: 10 }, () => Array(10).fill(0));
+  jointArrayObj['easy'] = Array.from({ length: 5 }, () => Array(5).fill(0));
+
+  if (timerInterval) {
+    clearInterval(timerInterval);
+    startTime = null;
+    timerInterval = null;
+    minutes.innerText = '00'
+    seconds.innerText = '00'
+    console.log("Таймер остановлен");
+  }
+
+  document.querySelectorAll('[id^="cell-"]').forEach(item => {
+    item.style.backgroundColor = 'white';
+    item.innerHTML = '';
+  })
+})
+
+
+
+const buttonSwitcherTheme = document.querySelector('.utility-item--theme-toggle')
+
+buttonSwitcherTheme.addEventListener('click', () => {
+  buttonSwitcherTheme.textContent = 
+    buttonSwitcherTheme.textContent === "Light On" ? "Light Off" : "Light On";
+
+  document.body.style.backgroundColor =
+  document.body.style.backgroundColor === 'gray' ? 'white' : 'gray'
+
+  document.body.style.color =
+  document.body.style.color === 'white' ? 'black' : 'white'
+
+  utilityItem.forEach(item => {
+    item.style.borderColor = 
+      item.style.borderColor === 'white' ? 'black' : 'white'
+  })
+
+  modalWindow.style.color =
+    modalWindow.color === 'black' ? 'white' : 'black'
+
+  modalWin.style.color =
+    modalWindow.color === 'black' ? 'white' : 'black'
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if (currentGame.level === 'easy') {
   style.textContent = `
@@ -54,11 +129,6 @@ if (currentGame.level === 'easy') {
     gameboardButtonsBelow.style.margin = "-239px 52px 0px 20px";
 } 
 
-
-
-
-
-
 createNonogram(currentGame.level, currentGame.name)
 createModalWindow()
 createSolutionButton();
@@ -66,6 +136,7 @@ createRandomButton()
 
 
 function createModalWindow() {
+
 
   const gameboard = document.querySelector('.gameboard')
   const style = document.createElement('style');
@@ -75,11 +146,17 @@ function createModalWindow() {
   const gameboardButtonsBelow = document.querySelector('.gameboard-buttons-below')
   
   closeModalWindow.addEventListener('click', () => {
+    jointArrayObj['hard'] = Array.from({ length: 15 }, () => Array(15).fill(0));
+    jointArrayObj['medium'] = Array.from({ length: 10 }, () => Array(10).fill(0));
+    jointArrayObj['easy'] = Array.from({ length: 5 }, () => Array(5).fill(0));
     modalWindow.style.visibility = 'hidden';
   })
   
   chooseAGame.addEventListener('click', () => {
     modalWindow.style.visibility = 'visible';
+    jointArrayObj['hard'] = Array.from({ length: 15 }, () => Array(15).fill(0));
+    jointArrayObj['medium'] = Array.from({ length: 10 }, () => Array(10).fill(0));
+    jointArrayObj['easy'] = Array.from({ length: 5 }, () => Array(5).fill(0));
   })
   
   const collectionOfModes = document.querySelectorAll('.level-item')
@@ -92,6 +169,8 @@ function createModalWindow() {
         clearInterval(timerInterval);
         startTime = null;
         timerInterval = null;
+        minutes.innerText = '00'
+        seconds.innerText = '00'
         console.log("Таймер остановлен");
       }
 
@@ -196,6 +275,14 @@ function createSolutionButton() {
 
   const btnSolution = document.querySelector('.utility-item--solution');
   btnSolution.addEventListener('click', () => {
+    if (timerInterval) {
+      clearInterval(timerInterval);
+      startTime = null;
+      timerInterval = null;
+      minutes.innerText = '00'
+      seconds.innerText = '00'
+      console.log("Таймер остановлен");
+    }
 
     document.querySelectorAll('[id^="cell-"]').forEach(item => {
       item.style.backgroundColor = 'white';
@@ -224,6 +311,10 @@ let previousNumber = -1;
 function createRandomButton() {
   const btnRandom = document.querySelector('.utility-item--random-game');
   btnRandom.addEventListener('click', () => {
+    jointArrayObj['hard'] = Array.from({ length: 15 }, () => Array(15).fill(0));
+    jointArrayObj['medium'] = Array.from({ length: 10 }, () => Array(10).fill(0));
+    jointArrayObj['easy'] = Array.from({ length: 5 }, () => Array(5).fill(0));
+
     if (timerInterval) {
       clearInterval(timerInterval);
       startTime = null;
@@ -270,15 +361,8 @@ function createRandomButton() {
 
 
 // GAMEBOARD STARTS
-let emptyArrayHard = Array.from({length: 15}, () => Array(15).fill(0));
-let emptyArrayMedium = Array.from({length: 10}, () => Array(10).fill(0));
-let emptyArrayEasy = Array.from({ length: 5 }, () => Array(5).fill(0));
 
-let jointArrayObj = {
-  'easy': emptyArrayEasy,
-  'medium': emptyArrayMedium,
-  'hard': emptyArrayHard
-}
+
 
 function isSolutionCorrect(playerArray, solutionArray) {
   return playerArray.every((row, i) =>
@@ -287,10 +371,13 @@ function isSolutionCorrect(playerArray, solutionArray) {
 }
 
 
-
+const modalTitleWinSpan = document.querySelector('.modal-title-win-span')
 // выбор нажатия на игровое поле (черные)
 // let startTime = null;
 // let timerInterval = null;
+modalWinClose.addEventListener('click', () => {
+  modalWin.style.visibility = 'hidden';
+})
 
 document.querySelector('.gameboard').addEventListener('click', (event) => {
   console.log(currentGame.name);
@@ -299,8 +386,16 @@ document.querySelector('.gameboard').addEventListener('click', (event) => {
     if (!startTime) {
       startTime = Date.now();
       timerInterval = setInterval(() => {
-        let time = ((Date.now() - startTime) / 1000).toFixed(1);
+        let time = Math.floor((Date.now() - startTime) / 1000);
+    
+        let mins = Math.floor(time / 60);
+        let secs = time % 60;
+    
+        minutes.innerText = String(mins).padStart(2, '0');
+        seconds.innerText = String(secs).padStart(2, '0');
+
         console.log(`Время: ${time} сек`);
+
       }, 1000);
     }
 
@@ -308,6 +403,9 @@ document.querySelector('.gameboard').addEventListener('click', (event) => {
 
     let row = event.target.id.split('-')[1];
     let column = event.target.id.split('-')[2];
+    console.log(row);
+    console.log(column);
+    console.log(jointArrayObj);
     jointArrayObj[currentGame.level][row][column] = jointArrayObj[currentGame.level][row][column] === 1 ? 0 : 1;
     
     console.clear();
@@ -318,13 +416,16 @@ document.querySelector('.gameboard').addEventListener('click', (event) => {
     if (isSolutionCorrect(jointArrayObj[currentGame.level], currentGame.solution)) {
       clearInterval(timerInterval); // Останавливаем таймер
       let totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
+
       console.log(`🎉 Победа! Время: ${totalTime} сек`);
+      modalTitleWinSpan.innerText = Math.floor((Date.now() - startTime) / 1000);
+      modalWin.style.visibility = 'visible';
       
       // Сброс игры
       startTime = null;
-      emptyArrayHard = Array.from({ length: 15 }, () => Array(15).fill(0));
-      emptyArrayMedium = Array.from({ length: 10 }, () => Array(10).fill(0));
-      emptyArrayEasy = Array.from({ length: 5 }, () => Array(5).fill(0));
+      jointArrayObj['hard'] = Array.from({ length: 15 }, () => Array(15).fill(0));
+      jointArrayObj['medium'] = Array.from({ length: 10 }, () => Array(10).fill(0));
+      jointArrayObj['easy'] = Array.from({ length: 5 }, () => Array(5).fill(0));
     }
   }
 });

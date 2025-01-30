@@ -1,4 +1,4 @@
-.modal-overlay {
+.modal-overlay-win {
   visibility: hidden;
   position: fixed;
   top: 0;
@@ -12,48 +12,34 @@
   z-index: 1000;
 }
 
-.modal-window {
+.modal-window-win {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 480px;
-  height: 430px;
+  width: 400px;
+  height: 150px;
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.modal-levels {
-  display: flex;
-  justify-content: space-between;
-}
-
-.level-item,
-.level-title {
-  padding: 0 30px;
-  font-size: 20px;
-  text-align: center;
-  font-weight: 300;
-}
-
-.level-item {
-  cursor: pointer;
-}
-
-.modal-title {
-  font-size: 32px;
+.modal-title-main-win {
+  font-size: 26px;
   font-weight: 500;
+  margin-bottom: 5px;
 }
 
-.modal-close-btn {
+.modal-title-win {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px;
+}
+
+.modal-close-btn-win {
   position: absolute;
   right: 2px;
   top: 5px;
   width: 35px;
   cursor: pointer;
-}
-
-.level-title {
-  font-weight: 500;;
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/modal-win.css"> 
   <link rel="stylesheet" href="./css/modal.css"> 
   <link rel="stylesheet" href="./css/style.css"> 
 </head>
@@ -17,7 +18,9 @@
           <div class="utility-item utility-item--random-game">Random game</div>
           <div class="utility-item utility-item--resume-game">Continue game</div>
         </div>
-        <div class="utility-item utility-item--timer">00:00</div>
+        <div class="utility-item utility-item--timer">
+          <span class="minutes">00</span>:<span class="seconds">00</span>
+        </div>
         <div class="second">
           <div class="utility-item utility-item--scoreboard">Table of score</div>
           <div class="utility-item utility-item--audio">Audio On</div>
@@ -483,6 +486,14 @@
         </div>
       </div>
       <img class="modal-close-btn" src="./assets/svg/close.svg" alt="Close modal">
+    </div>
+  </div>
+
+  <div class="modal-overlay-win">
+    <div class="modal-window-win">
+      <p class="modal-title-main-win">GREAT!</p>
+      <p class="modal-title-win">You have solved the nonogram in <span class="modal-title-win-span"></span> seconds!</p>
+      <img class="modal-close-btn-win" src="./assets/svg/close.svg" alt="Close modal">
     </div>
   </div>
 
