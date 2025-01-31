@@ -426,6 +426,27 @@ document.querySelector('.gameboard').addEventListener('click', (event) => {
       jointArrayObj['hard'] = Array.from({ length: 15 }, () => Array(15).fill(0));
       jointArrayObj['medium'] = Array.from({ length: 10 }, () => Array(10).fill(0));
       jointArrayObj['easy'] = Array.from({ length: 5 }, () => Array(5).fill(0));
+
+
+      // сохраняем игру в LocalStorage для table of score
+      let saveObjGame = {
+        'name': currentGame.name,
+        'level': currentGame.level,
+        'minutes': minutes.innerText,
+        'seconds': seconds.innerText
+      }
+
+      let savedGames = JSON.parse(localStorage.getItem('gameHistory')) || [];
+
+      if (savedGames.length === 5) {
+        savedGames.shift()
+      }
+      savedGames.push(saveObjGame);
+
+      localStorage.setItem('gameHistory', JSON.stringify(savedGames));
+
+      console.log(savedGames);
+      
     }
   }
 });
@@ -441,3 +462,39 @@ document.addEventListener('contextmenu', (event) => {
   }
 });
 // GAMEBOARD ENDS
+
+
+
+
+
+
+/// modal table 
+
+document.querySelector('.utility-item--scoreboard').addEventListener('click', () => {
+  document.querySelector('.modal-overlay-table ').style.visibility = 'visible';
+
+  const historyOfGames = JSON.parse(localStorage.getItem('gameHistory'))
+                             .sort((a, b) => parseFloat(a.time) - parseFloat(b.time))
+
+  console.log(historyOfGames);
+  if (historyOfGames.length > 0) {
+    document.querySelector('.modal-title-table').style.display = 'none'
+  }
+  const modalTable = document.querySelector('.list-of-games');
+  modalTable.innerHTML = '';
+
+  historyOfGames.forEach((item, index) => {
+    const elementOfGame = document.createElement('p')
+    elementOfGame.innerText = `${index + 1}. Name: ${item.name} | Level: ${item.level} | Time: ${item.minutes}:${item.seconds}`
+
+    console.log(item);
+    modalTable.appendChild(elementOfGame)
+  })
+})
+
+
+
+
+document.querySelector('.modal-close-btn-table').addEventListener('click', () => {
+  document.querySelector('.modal-overlay-table ').style.visibility = 'hidden';
+})

@@ -1,0 +1,51 @@
+.modal-overlay-table {
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-window-table {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 400px;
+  height: 310px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.list-of-games>p {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.modal-title-main-table {
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.modal-title-table {
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px;
+}
+
+.modal-close-btn-table {
+  position: absolute;
+  right: 2px;
+  top: 5px;
+  width: 35px;
+  cursor: pointer;
+}
