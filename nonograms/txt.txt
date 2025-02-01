@@ -1,3 +1,0 @@
-Advanced Scope
-3. sound accompaniment (on/off) for every events (see Advanced block): +15
-4. implemented saving the state of the latest game and "Continue last game" button: +15

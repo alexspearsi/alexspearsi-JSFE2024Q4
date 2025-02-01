@@ -2,17 +2,312 @@ import { levelOfGame } from './templates.js';
 import { createNonogram } from './CreateNonogram.js';
 
 
+const main = document.createElement('div')
+main.classList.add('main')
+document.body.append(main)
+
+function createModal() {
+  const modalOverlay = document.createElement("div");
+  modalOverlay.classList.add("modal-overlay");
+
+  const modalWindow = document.createElement("div");
+  modalWindow.classList.add("modal-window");
+
+  const modalTitle = document.createElement("p");
+  modalTitle.classList.add("modal-title");
+  modalTitle.textContent = "Choose your game mode";
+
+  const modalLevels = document.createElement("div");
+  modalLevels.classList.add("modal-levels");
+
+  const levels = [
+      { title: "Easy Mode", items: ["Dino", "Clown", "Camel", "Kitten", "Tree"], class: "level--easy" },
+      { title: "Medium Mode", items: ["Chicken", "Penguin", "Mushroom", "Coffee", "Puppy"], class: "level--medium" },
+      { title: "Hard Mode", items: ["Ice Cream", "Raccoon", "Alien", "Cactus", "Strawberry"], class: "level--hard" }
+  ];
+
+  levels.forEach(level => {
+      const levelDiv = document.createElement("div");
+      levelDiv.classList.add("level", level.class);
+
+      const levelTitle = document.createElement("p");
+      levelTitle.classList.add("level-title");
+      levelTitle.textContent = level.title;
+      levelDiv.appendChild(levelTitle);
+
+      level.items.forEach(item => {
+          const levelItem = document.createElement("p");
+          levelItem.classList.add("level-item");
+          levelItem.textContent = item;
+          levelDiv.appendChild(levelItem);
+      });
+
+      modalLevels.appendChild(levelDiv);
+  });
+
+  const closeButton = document.createElement("img");
+  closeButton.classList.add("modal-close-btn");
+  closeButton.src = "./assets/svg/close.svg";
+  closeButton.alt = "Close modal";
+
+
+  modalWindow.appendChild(modalTitle);
+  modalWindow.appendChild(modalLevels);
+  modalWindow.appendChild(closeButton);
+  modalOverlay.appendChild(modalWindow);
+  
+  document.body.appendChild(modalOverlay);
+}
+createModal();
+
+function createWinModal() {
+  const modalOverlay = document.createElement("div");
+  modalOverlay.classList.add("modal-overlay-win");
+  modalOverlay.style.visibility = 'hidden';
+
+  const modalWindow = document.createElement("div");
+  modalWindow.classList.add("modal-window-win");
+
+  const mainTitle = document.createElement("p");
+  mainTitle.classList.add("modal-title-main-win");
+  mainTitle.textContent = "GREAT!";
+
+  const titleWin = document.createElement("p");
+  titleWin.classList.add("modal-title-win");
+  titleWin.textContent = "You have solved the nonogram in ";
+  
+  const timeSpan = document.createElement("span");
+  timeSpan.classList.add("modal-title-win-span");
+  
+  const secondsText = document.createTextNode(" seconds!");
+  
+  titleWin.appendChild(timeSpan);
+  titleWin.appendChild(secondsText);
+
+  const closeButton = document.createElement("img");
+  closeButton.classList.add("modal-close-btn-win");
+  closeButton.src = "./assets/svg/close.svg";
+  closeButton.alt = "Close modal";
+
+  closeButton.addEventListener("click", () => {
+      modalOverlay.style.visibility = 'hidden';
+  });
+
+  modalWindow.appendChild(mainTitle);
+  modalWindow.appendChild(titleWin);
+  modalWindow.appendChild(closeButton);
+  modalOverlay.appendChild(modalWindow);
+  
+  document.body.appendChild(modalOverlay);
+
+  return modalOverlay;
+}
+createWinModal();
+
+function createScoreModal() {
+  const modalOverlay = document.createElement("div");
+  modalOverlay.classList.add("modal-overlay-table");
+
+  const modalWindow = document.createElement("div");
+  modalWindow.classList.add("modal-window-table");
+
+  const mainTitle = document.createElement("p");
+  mainTitle.classList.add("modal-title-main-table");
+  mainTitle.textContent = "List of Score";
+
+  const listOfGames = document.createElement("div");
+  listOfGames.classList.add("list-of-games");
+
+  const noGamesMessage = document.createElement("p");
+  noGamesMessage.classList.add("modal-title-table");
+  noGamesMessage.textContent = "You have not solved any nonograms yet!";
+  modalWindow.appendChild(noGamesMessage);
+
+  const closeButton = document.createElement("img");
+  closeButton.classList.add("modal-close-btn-table");
+  closeButton.src = "./assets/svg/close.svg";
+  closeButton.alt = "Close modal";
+
+  closeButton.addEventListener("click", () => {
+      modalOverlay.style.visibility = 'hidden';
+  });
+
+  modalWindow.appendChild(mainTitle);
+  modalWindow.appendChild(listOfGames);
+  modalWindow.appendChild(closeButton);
+  modalOverlay.appendChild(modalWindow);
+  
+  document.body.appendChild(modalOverlay);
+}
+createScoreModal();
+
+function createUtilities() {
+  const utilitiesWrapper = document.createElement("div");
+  utilitiesWrapper.classList.add("utilities-wrapper");
+
+  const utilities = document.createElement("div");
+  utilities.classList.add("utilities");
+
+  const firstRow = document.createElement("div");
+  firstRow.classList.add("first");
+
+  const chooseGame = document.createElement("div");
+  chooseGame.classList.add("utility-item", "utility-item--choose-game");
+  chooseGame.textContent = "Choose game";
+
+  const randomGame = document.createElement("div");
+  randomGame.classList.add("utility-item", "utility-item--random-game");
+  randomGame.textContent = "Random game";
+
+  const resumeGame = document.createElement("div");
+  resumeGame.classList.add("utility-item", "utility-item--resume-game");
+  resumeGame.textContent = "Continue game";
+
+  firstRow.appendChild(chooseGame);
+  firstRow.appendChild(randomGame);
+  firstRow.appendChild(resumeGame);
+
+  const timer = document.createElement("div");
+  timer.classList.add("utility-item", "utility-item--timer");
+  
+  const minutes = document.createElement("span");
+  minutes.classList.add("minutes");
+  minutes.textContent = "00";
+  
+  const separator = document.createTextNode(":" );
+  
+  const seconds = document.createElement("span");
+  seconds.classList.add("seconds");
+  seconds.textContent = "00";
+  
+  timer.appendChild(minutes);
+  timer.appendChild(separator);
+  timer.appendChild(seconds);
+
+  const secondRow = document.createElement("div");
+  secondRow.classList.add("second");
+
+  const scoreboard = document.createElement("div");
+  scoreboard.classList.add("utility-item", "utility-item--scoreboard");
+  scoreboard.textContent = "Table of score";
+
+  const audioToggle = document.createElement("div");
+  audioToggle.classList.add("utility-item", "utility-item--audio");
+  audioToggle.textContent = "Audio On";
+
+  const themeToggle = document.createElement("div");
+  themeToggle.classList.add("utility-item", "utility-item--theme-toggle");
+  themeToggle.textContent = "Light On";
+
+  secondRow.appendChild(scoreboard);
+  secondRow.appendChild(audioToggle);
+  secondRow.appendChild(themeToggle);
+
+  utilities.appendChild(firstRow);
+  utilities.appendChild(timer);
+  utilities.appendChild(secondRow);
+
+  utilitiesWrapper.appendChild(utilities);
+  document.querySelector('.main').prepend(utilitiesWrapper);
+}
+createUtilities();
+
+function createBoard() {
+  const gameboardWrapper = document.createElement("div");
+  gameboardWrapper.classList.add("gameboard-wrapper");
+  
+  const gameboardCreated = document.createElement("div");
+  gameboardCreated.classList.add("gameboard");
+  
+  for (let row = 4; row >= 0; row--) {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("row", "clues");
+    for (let col = 0; col < 15; col++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell", "top-hint");
+      cell.id = `top-${row}-${col}`;
+      rowDiv.appendChild(cell);
+    }
+    gameboardCreated.appendChild(rowDiv);
+  }
+  
+  for (let row = 0; row < 15; row++) {
+    const rowDiv = document.createElement("div");
+    rowDiv.classList.add("row");
+    
+    for (let hintRow = 4; hintRow >= 0; hintRow--) {
+      const leftHint = document.createElement("div");
+      leftHint.classList.add("cell", "left-hint");
+      leftHint.id = `left-${hintRow}-${row}`;
+      rowDiv.appendChild(leftHint);
+    }
+    
+    for (let col = 0; col < 15; col++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      cell.id = `cell-${row}-${col}`;
+      rowDiv.appendChild(cell);
+    }
+    
+    gameboardCreated.appendChild(rowDiv);
+  }
+  
+  gameboardWrapper.appendChild(gameboardCreated);
+  document.querySelector('.main').insertBefore(gameboardWrapper, document.querySelector('.main').children[1]);
+  
+  const gameboardElement = document.querySelector(".gameboard");
+  if (gameboardElement) {
+    gameboardElement.classList.add("visible");
+  }
+}
+
+createBoard()
+
+function addGameButtonsBelow() {
+  const gameboardButtons = document.createElement('div');
+  gameboardButtons.classList.add('gameboard-buttons-below');
+
+  const solutionButton = document.createElement('div');
+  solutionButton.classList.add('utility-item', 'utility-item--solution');
+  solutionButton.textContent = 'Solution';
+
+  const resetButton = document.createElement('div');
+  resetButton.classList.add('utility-item', 'utility-item--reset-game');
+  resetButton.textContent = 'Reset the game';
+
+  gameboardButtons.appendChild(solutionButton);
+  gameboardButtons.appendChild(resetButton);
+
+  document.querySelector('.main').appendChild(gameboardButtons);
+
+}
+
+addGameButtonsBelow();
+
+function createAudioElements() {
+  const sounds = [
+    { id: "click-white", src: "./audio/click-white.mp3" },
+    { id: "click-black", src: "./audio/click-black.mp3" },
+    { id: "click-x", src: "./audio/click-x.mp3" },
+    { id: "click-win", src: "./audio/click-win.mp3" }
+  ];
+
+  sounds.forEach(sound => {
+    const audio = document.createElement('audio');
+    audio.id = sound.id;
+    audio.src = sound.src;
+    document.body.appendChild(audio);
+  })
+}
+
+createAudioElements();
+
 let timerInterval = null;
 let startTime = null;
-
+let audioOn = true;
 let currentGame = levelOfGame[['easy']][Math.floor(Math.random() * 5)]
-document.querySelector('.gameboard').classList.add('visible');
-
-
 const gameboard = document.querySelector('.gameboard')
 const style = document.createElement('style');
-const chooseAGame = document.querySelector('.utility-item--choose-game')
-const closeModalWindow = document.querySelector('.modal-close-btn')
 const modalWindow = document.querySelector('.modal-overlay')
 const gameboardButtonsBelow = document.querySelector('.gameboard-buttons-below')
 const modalWin = document.querySelector('.modal-overlay-win');
@@ -21,14 +316,13 @@ const timeWindow = document.querySelector('.utility-item--timer');
 const [minutes, seconds] = timeWindow.children
 const utilityItem = document.querySelectorAll('.utility-item')
 const resetTheGameBtn = document.querySelector('.utility-item--reset-game')
+const buttonSwitcherTheme = document.querySelector('.utility-item--theme-toggle')
 
 let jointArrayObj = {
   'easy': Array.from({ length: 5 }, () => Array(5).fill(0)),
   'medium': Array.from({ length: 10 }, () => Array(10).fill(0)),
   'hard': Array.from({ length: 15 }, () => Array(15).fill(0))
 }
-
-
 
 resetTheGameBtn.addEventListener('click', () => {
   jointArrayObj['hard'] = Array.from({ length: 15 }, () => Array(15).fill(0));
@@ -41,7 +335,6 @@ resetTheGameBtn.addEventListener('click', () => {
     timerInterval = null;
     minutes.innerText = '00'
     seconds.innerText = '00'
-    console.log("Таймер остановлен");
   }
 
   document.querySelectorAll('[id^="cell-"]').forEach(item => {
@@ -50,9 +343,12 @@ resetTheGameBtn.addEventListener('click', () => {
   })
 })
 
+document.querySelector('.utility-item--audio').addEventListener('click', () => {
+  document.querySelector('.utility-item--audio').textContent = 
+    document.querySelector('.utility-item--audio').textContent === "Audio On" ? "Audio Off" : "Audio On";
 
-
-const buttonSwitcherTheme = document.querySelector('.utility-item--theme-toggle')
+  audioOn = audioOn === true ? false : true;
+})
 
 buttonSwitcherTheme.addEventListener('click', () => {
   buttonSwitcherTheme.textContent = 
@@ -75,19 +371,6 @@ buttonSwitcherTheme.addEventListener('click', () => {
   modalWin.style.color =
     modalWindow.color === 'black' ? 'white' : 'black'
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if (currentGame.level === 'easy') {
   style.textContent = `
@@ -136,8 +419,6 @@ createRandomButton()
 
 
 function createModalWindow() {
-
-
   const gameboard = document.querySelector('.gameboard')
   const style = document.createElement('style');
   const chooseAGame = document.querySelector('.utility-item--choose-game')
@@ -163,17 +444,13 @@ function createModalWindow() {
   
   collectionOfModes.forEach(element => {
     element.addEventListener('click', () => {
-
-      
       if (timerInterval) {
         clearInterval(timerInterval);
         startTime = null;
         timerInterval = null;
         minutes.innerText = '00'
         seconds.innerText = '00'
-        console.log("Таймер остановлен");
       }
-
 
       const cells = document.querySelectorAll('.cell')
       cells.forEach(cell => {
@@ -281,7 +558,6 @@ function createSolutionButton() {
       timerInterval = null;
       minutes.innerText = '00'
       seconds.innerText = '00'
-      console.log("Таймер остановлен");
     }
 
     document.querySelectorAll('[id^="cell-"]').forEach(item => {
@@ -319,7 +595,6 @@ function createRandomButton() {
       clearInterval(timerInterval);
       startTime = null;
       timerInterval = null;
-      console.log("Таймер остановлен");
     }
 
     let cells = document.querySelectorAll('.cell')
@@ -342,7 +617,6 @@ function createRandomButton() {
       return newNumber;
     }
 
-    console.log(currentGame.name);
     currentGame = levelOfGame['hard'][getUniqueRandomNumber()]
   
     document.querySelector('style')?.remove();
@@ -356,33 +630,33 @@ function createRandomButton() {
   })
 }
 
-
-
-
-
-// GAMEBOARD STARTS
-
-
-
 function isSolutionCorrect(playerArray, solutionArray) {
   return playerArray.every((row, i) =>
     row.every((cell, j) => cell === solutionArray[i][j])
-  );
+);
 }
 
-
 const modalTitleWinSpan = document.querySelector('.modal-title-win-span')
-// выбор нажатия на игровое поле (черные)
-// let startTime = null;
-// let timerInterval = null;
 modalWinClose.addEventListener('click', () => {
   modalWin.style.visibility = 'hidden';
 })
 
+// GAMEBOARD STARTS
 document.querySelector('.gameboard').addEventListener('click', (event) => {
-  console.log(currentGame.name);
   
   if (event.target.matches('[id^="cell-"]')) {
+
+
+    if (event.target.style.backgroundColor !== 'black') {
+      if (audioOn) {
+        document.getElementById('click-black').play();
+      }
+    } else {
+      if (audioOn) {
+        document.getElementById('click-white').play();
+      }
+    }
+
     if (!startTime) {
       startTime = Date.now();
       timerInterval = setInterval(() => {
@@ -394,7 +668,6 @@ document.querySelector('.gameboard').addEventListener('click', (event) => {
         minutes.innerText = String(mins).padStart(2, '0');
         seconds.innerText = String(secs).padStart(2, '0');
 
-        console.log(`Время: ${time} сек`);
 
       }, 1000);
     }
@@ -403,21 +676,17 @@ document.querySelector('.gameboard').addEventListener('click', (event) => {
 
     let row = event.target.id.split('-')[1];
     let column = event.target.id.split('-')[2];
-    console.log(row);
-    console.log(column);
-    console.log(jointArrayObj);
     jointArrayObj[currentGame.level][row][column] = jointArrayObj[currentGame.level][row][column] === 1 ? 0 : 1;
     
-    console.clear();
-    console.log(currentGame.name);
-    console.log(jointArrayObj[currentGame.level]);
 
     // Проверка победы
     if (isSolutionCorrect(jointArrayObj[currentGame.level], currentGame.solution)) {
+      if (audioOn) {
+        document.getElementById('click-win').play();
+      }
       clearInterval(timerInterval); // Останавливаем таймер
       let totalTime = ((Date.now() - startTime) / 1000).toFixed(1);
 
-      console.log(`🎉 Победа! Время: ${totalTime} сек`);
       modalTitleWinSpan.innerText = Math.floor((Date.now() - startTime) / 1000);
       modalWin.style.visibility = 'visible';
       
@@ -442,31 +711,37 @@ document.querySelector('.gameboard').addEventListener('click', (event) => {
         savedGames.shift()
       }
       savedGames.push(saveObjGame);
+      savedGames = savedGames.sort((a, b) => {
+        return (Number((a.minutes) * 60) + Number(a.seconds)) - (Number((b.minutes) * 60) + Number(b.seconds))
+      })
 
       localStorage.setItem('gameHistory', JSON.stringify(savedGames));
-
-      console.log(savedGames);
-      
     }
   }
 });
-
 
 // выбор нажатия на игравое поле (крестики)
 document.addEventListener('contextmenu', (event) => {
   if (event.target.matches('[id^="cell-"]')) {
     event.preventDefault();
+
+    if (event.target.innerText === 'X') {
+      if (audioOn) {
+        document.getElementById('click-white').play();
+      }
+    } else if (event.target.style.backgroundColor !== 'black') {
+      if (audioOn) {
+        document.getElementById('click-x').play();
+      }
+    }
+
+
     if (event.target.style.backgroundColor !== 'black') {
       event.target.innerText = event.target.innerText === 'X' ? '' : 'X';
     }
   }
 });
 // GAMEBOARD ENDS
-
-
-
-
-
 
 /// modal table 
 
@@ -476,7 +751,6 @@ document.querySelector('.utility-item--scoreboard').addEventListener('click', ()
   const historyOfGames = JSON.parse(localStorage.getItem('gameHistory'))
                              .sort((a, b) => parseFloat(a.time) - parseFloat(b.time))
 
-  console.log(historyOfGames);
   if (historyOfGames.length > 0) {
     document.querySelector('.modal-title-table').style.display = 'none'
   }
@@ -487,14 +761,10 @@ document.querySelector('.utility-item--scoreboard').addEventListener('click', ()
     const elementOfGame = document.createElement('p')
     elementOfGame.innerText = `${index + 1}. Name: ${item.name} | Level: ${item.level} | Time: ${item.minutes}:${item.seconds}`
 
-    console.log(item);
     modalTable.appendChild(elementOfGame)
   })
 })
 
-
-
-
 document.querySelector('.modal-close-btn-table').addEventListener('click', () => {
-  document.querySelector('.modal-overlay-table ').style.visibility = 'hidden';
+  document.querySelector('.modal-overlay-table').style.visibility = 'hidden';
 })
