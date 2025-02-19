@@ -32,3 +32,5 @@ export interface AppViewSoruces {
   status: string;
   sources: NewsSources[];
 }
+
+export type LoaderGeneric = Record<string, string>
