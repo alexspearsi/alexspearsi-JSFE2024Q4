@@ -21,3 +21,14 @@ export interface NewsSources {
   name: string;
   url: string;
 }
+
+export interface AppViewNews {
+    statsu: string,
+    totalResults: number,
+    articles: NewsItem[]
+}
+
+export interface AppViewSoruces {
+  status: string;
+  sources: NewsSources[];
+}
