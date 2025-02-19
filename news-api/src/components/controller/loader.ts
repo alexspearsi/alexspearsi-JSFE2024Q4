@@ -5,8 +5,8 @@ class Loader {
     private readonly options: LoaderGeneric;
 
     constructor(baseLink: string, options: LoaderGeneric) {
-        this.baseLink = baseLink;
-        this.options = options;
+        this.baseLink = baseLink; // API_URL
+        this.options = options; // API_KEY
     }
 
     public getResp(
