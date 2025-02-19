@@ -1,4 +1,4 @@
-export interface NewsPiece {
+export interface NewsItem {
   author: string;
   content: string;
   description: string;
@@ -10,4 +10,14 @@ export interface NewsPiece {
   title: string;
   url: string;
   urlToImage: string;
+}
+
+export interface NewsSources {
+  category: string;
+  country: string;
+  description: string;
+  id: string;
+  language: string;
+  name: string;
+  url: string;
 }
