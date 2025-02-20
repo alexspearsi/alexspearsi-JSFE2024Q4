@@ -14,16 +14,16 @@ export interface NewsItem {
 
 export interface NewsSources {
     category: string;
-    country: string;
+    country: Countries;
     description: string;
     id: string;
-    language: string;
+    language: Languages;
     name: string;
     url: string;
 }
 
 export interface AppViewNews {
-    statsu: string;
+    status: string;
     totalResults: number;
     articles: NewsItem[];
 }
@@ -35,5 +35,46 @@ export interface AppViewSoruces {
 
 export type LoaderGeneric = Record<string, string>;
 
-export type SourcesCallback = (data: NewsSources[], error?: Error) => void;
-export type NewsCallback = (data: NewsItem[], error?: Error) => void;
+export type SourcesCallback = (data: AppViewSoruces, error?: Error) => void;
+export type NewsCallback = (data: AppViewNews, error?: Error) => void;
+
+export enum Languages {
+    English = 'en',
+    Norwegian = 'no',
+    Italian = 'it',
+    Arabic = 'ar',
+    Urdu = 'ud',
+    German = 'de',
+    Portuguese = 'pt',
+    Spanish = 'es',
+    French = 'fr',
+    Hebrew = 'he',
+    Russian = 'ru',
+    Swedish = 'sv',
+    Dutch = 'nl',
+    Chinese = 'zh',
+}
+
+export enum Countries {
+    UnitedStates = 'us',
+    Australia = 'au',
+    Norway = 'no',
+    Italy = 'it',
+    SaudiArabia = 'sa',
+    Pakistan = 'pk',
+    UnitedKingdom = 'gb',
+    Germany = 'de',
+    Brazil = 'br',
+    Canada = 'ca',
+    Spain = 'es',
+    Argentina = 'ar',
+    France = 'fr',
+    India = 'in',
+    Israel = 'is',
+    Russia = 'ru',
+    Sweden = 'se',
+    SouthAfrica = 'za',
+    Ireland = 'ie',
+    Netherlands = 'nl',
+    China = 'zh',
+}
