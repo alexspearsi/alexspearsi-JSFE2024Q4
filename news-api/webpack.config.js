@@ -14,14 +14,21 @@ const baseConfig = {
                 test: /\.css$/i,
                 use: ['style-loader', 'css-loader'],
             },
-            { 
-                test: /\.ts$/i, 
-                use: 'ts-loader' 
-            }
+            {
+                test: /\.ts$/i,
+                use: 'ts-loader',
+            },
+            {
+                test: /\.svg$/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/[name].[hash:8][ext]',
+                },
+            },
         ],
     },
     resolve: {
-        extensions: ['.ts', '.js']
+        extensions: ['.ts', '.js'],
     },
     output: {
         filename: 'index.js',
@@ -34,7 +41,7 @@ const baseConfig = {
             filename: 'index.html',
         }),
         new CleanWebpackPlugin(),
-        new EslingPlugin({ extensions: 'ts' })
+        new EslingPlugin({ extensions: 'ts' }),
     ],
 };
 

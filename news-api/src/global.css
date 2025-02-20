@@ -1,7 +1,29 @@
+::-webkit-scrollbar {
+    width: 12px;
+    height: 10px;
+  }
+  
+::-webkit-scrollbar-track {
+    background: #3f3e3e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #30c5ff;
+    border-radius: 10px;
+}
+
 body {
+    display: flex;
+    flex-direction: column;
+    height: 98vh;
     color: #fff;
     background: #17181c;
     font-family: sans-serif;
+}
+
+main {
+    flex: 1;
 }
 
 header {
@@ -9,27 +31,36 @@ header {
 }
 
 header h1 {
+    text-align: center;
     font-size: 40px;
     font-weight: 800;
 }
 
 footer {
-    height: 100px;
+    margin: 5px 20px 0px 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
 }
-footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+
+svg {
+    width: 100px;
+    cursor: pointer;
+    transition: fill 1s ease;
 }
-footer .copyright a {
-    color: #444;
+
+svg:hover {
+    fill: #00aaff;
 }
-footer .copyright a:hover {
-    color: #555;
+
+p {
+    color: white;
 }
-footer .copyright:before {
-    content: '©';
+p>a {
+    text-decoration: none;
+    color: white;
+    transition: color 0.7s ease;
+}
+
+p>a:hover {
+    color: #00aaff
 }
