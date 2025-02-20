@@ -9,7 +9,7 @@ class Loader {
         this.options = options; // API_KEY
     }
 
-    public getResp(
+    public getResp<T = string>(
         {
             endpoint,
             options = {},
@@ -17,11 +17,18 @@ class Loader {
             endpoint: string;
             options?: LoaderGeneric;
         },
-        callback = () => {
+        callback: (data: T) => void = () => {
             console.error('No callback for GET response');
         }
-    ): void {
-        this.load('GET', endpoint, callback, options);
+    ) {
+        this.load(
+            'GET',
+            endpoint,
+            (data: string) => {
+                callback(data as T);
+            },
+            options
+        );
     }
 
     public errorHandler(res: Response): Response {
